@@ -1,11 +1,11 @@
-import { getNextStaticProps } from '@faustjs/next';
+import { getNextStaticProps } from "@faustjs/next";
 
-import { GetStaticPropsContext } from 'next';
-import Head from 'next/head';
-import React from 'react';
-import { CTA, Footer, Header, Hero, Posts } from 'components';
-import styles from 'scss/pages/home.module.scss';
-import { client } from 'client';
+import { GetStaticPropsContext } from "next";
+import Head from "next/head";
+import React from "react";
+import { CTA, Footer, Header, Hero, Posts } from "components";
+import styles from "scss/pages/home.module.scss";
+import { client } from "client";
 
 export default function Page() {
   const { usePosts, useQuery } = client;
@@ -13,16 +13,13 @@ export default function Page() {
   const posts = usePosts({
     first: 6,
     where: {
-      categoryName: 'uncategorized',
+      categoryName: "uncategorized",
     },
   });
 
   return (
     <>
-      <Header
-        title={generalSettings.title}
-        description={generalSettings.description}
-      />
+      <Header description={generalSettings.description} />
 
       <Head>
         <title>
@@ -31,41 +28,19 @@ export default function Page() {
       </Head>
 
       <main className="content">
-        <Hero
-          title="Get Started with Headless"
-          buttonText="Developer Docs"
-          buttonURL="https://faustjs.org"
-          button2Text="Headless on GitHub"
-          button2URL="https://github.com/wpengine/faustjs"
-          bgImage="/images/headless_hero_background.jpg"
-          id={styles.home_hero}>
-          <p>
-            WP&nbsp;Engine’s Headless WordPress Framework includes this example
-            project, the{' '}
-            <a href="https://github.com/wpengine/faustjs#wordpress-plugin">
-              headless WordPress plugin
-            </a>
-            ,{' '}
-            <a href="https://github.com/wpengine/faustjs">headless packages</a>,
-            and{' '}
-            <a href="https://faustjs.org/docs/tutorial/dev-env-setup">
-              tutorials
-            </a>{' '}
-            to make building headless WordPress sites fast and fun.
-          </p>
-        </Hero>
+        <Hero bgImage="/images/homepage-banner.jpeg" id={styles.home_hero} />
         <section className={styles.explore}>
           <div className="wrap">
             <h2>Explore this Example Project</h2>
             <p>
-              This headless example project uses{' '}
-              <a href="https://nextjs.org/">Next.js</a>,{' '}
-              <a href="https://graphql.org/">GraphQL</a>,{' '}
-              <a href="https://gqty.dev">GQty</a> and the{' '}
+              This headless example project uses{" "}
+              <a href="https://nextjs.org/">Next.js</a>,{" "}
+              <a href="https://graphql.org/">GraphQL</a>,{" "}
+              <a href="https://gqty.dev">GQty</a> and the{" "}
               <a href="https://github.com/wpengine/faustjs">
                 WP&nbsp;Engine headless packages
-              </a>{' '}
-              for WordPress integration. Dive in and edit this template at{' '}
+              </a>{" "}
+              for WordPress integration. Dive in and edit this template at{" "}
               <code>src/pages/index.tsx</code> or discover more below.
             </p>
             <div className={styles.features}>
@@ -74,10 +49,10 @@ export default function Page() {
                 <p>
                   Add styles to load on every page, such as typography and
                   layout rules, in <code>src/scss/main.scss</code>. The project
-                  adds{' '}
+                  adds{" "}
                   <a href="https://necolas.github.io/normalize.css/">
                     normalize.css
-                  </a>{' '}
+                  </a>{" "}
                   in <code>src/pages/_app.tsx</code>. Google Fonts are enqueued
                   in <code>src/pages/_document.tsx</code>.
                 </p>
@@ -86,12 +61,12 @@ export default function Page() {
               <div className={styles.feature}>
                 <h3>Components</h3>
                 <p>
-                  Add or edit components in the <code>src/components</code>{' '}
-                  folder. Find component styles at{' '}
-                  <code>src/scss/components</code>, which use{' '}
+                  Add or edit components in the <code>src/components</code>{" "}
+                  folder. Find component styles at{" "}
+                  <code>src/scss/components</code>, which use{" "}
                   <a href="https://nextjs.org/docs/basic-features/built-in-css-support#adding-component-level-css">
                     CSS modules
-                  </a>{' '}
+                  </a>{" "}
                   to scope CSS to each component.
                 </p>
               </div>
@@ -99,10 +74,10 @@ export default function Page() {
               <div className={styles.feature}>
                 <h3>Hooks</h3>
                 <p>
-                  Fetch data from WordPress with <code>usePost</code>,{' '}
+                  Fetch data from WordPress with <code>usePost</code>,{" "}
                   <code>usePosts</code>, <code>useGeneralSettings</code> and
                   other custom hooks. Use these hooks in your page templates to
-                  pass data to custom components. See{' '}
+                  pass data to custom components. See{" "}
                   <code>src/pages/index.tsx</code> for examples.
                 </p>
               </div>
@@ -121,9 +96,10 @@ export default function Page() {
           title="Questions or comments?"
           buttonText="Join the discussion on GitHub"
           buttonURL="https://github.com/wpengine/faustjs/discussions"
-          headingLevel="h2">
+          headingLevel="h2"
+        >
           <p>
-            We welcome feature requests, bug reports and questions in the{' '}
+            We welcome feature requests, bug reports and questions in the{" "}
             <a href="https://github.com/wpengine/faustjs">
               Headless Framework GitHub repository
             </a>

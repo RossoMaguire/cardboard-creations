@@ -1,11 +1,11 @@
-import { getNextStaticProps, is404 } from '@faustjs/next';
-import { client, Post } from 'client';
-import { Footer, Header, Hero } from 'components';
-import { GetStaticPropsContext } from 'next';
-import Head from 'next/head';
+import { getNextStaticProps, is404 } from "@faustjs/next";
+import { client, Post } from "client";
+import { Footer, Header, Hero } from "components";
+import { GetStaticPropsContext } from "next";
+import Head from "next/head";
 
 export interface PostProps {
-  post: Post | Post['preview']['node'] | null | undefined;
+  post: Post | Post["preview"]["node"] | null | undefined;
 }
 
 export function PostComponent({ post }: PostProps) {
@@ -14,10 +14,7 @@ export function PostComponent({ post }: PostProps) {
 
   return (
     <>
-      <Header
-        title={generalSettings.title}
-        description={generalSettings.description}
-      />
+      <Header description={generalSettings.description} />
 
       <Head>
         <title>
@@ -32,7 +29,7 @@ export function PostComponent({ post }: PostProps) {
 
       <main className="content content-single">
         <div className="wrap">
-          <div dangerouslySetInnerHTML={{ __html: post?.content() ?? '' }} />
+          <div dangerouslySetInnerHTML={{ __html: post?.content() ?? "" }} />
         </div>
       </main>
 
@@ -59,6 +56,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 export function getStaticPaths() {
   return {
     paths: [],
-    fallback: 'blocking',
+    fallback: "blocking",
   };
 }

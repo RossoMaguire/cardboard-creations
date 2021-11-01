@@ -1,8 +1,8 @@
-import React from 'react';
-import styles from 'scss/components/Hero.module.scss';
+import React from "react";
+import styles from "scss/components/Hero.module.scss";
 
 interface Props {
-  title: string;
+  title?: string;
   id?: string;
   bgImage?: string;
   buttonText?: string;
@@ -13,7 +13,7 @@ interface Props {
 }
 
 function Hero({
-  title = 'Hero Title',
+  title,
   id,
   bgImage,
   buttonText,
@@ -26,8 +26,9 @@ function Hero({
     <section
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...(id && { id })}
-      style={{ backgroundImage: bgImage ? `url(${bgImage})` : 'none' }}
-      className={styles.hero}>
+      style={{ backgroundImage: bgImage ? `url(${bgImage})` : "none" }}
+      className={styles.hero}
+    >
       <div className={styles.wrap}>
         <h1>{title}</h1>
         <div className={styles.intro}>

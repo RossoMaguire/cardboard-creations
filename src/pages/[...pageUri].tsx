@@ -1,11 +1,11 @@
-import { getNextStaticProps, is404 } from '@faustjs/next';
-import { Footer, Header, Hero } from 'components';
-import { GetStaticPropsContext } from 'next';
-import Head from 'next/head';
-import { client, Page as PageType } from 'client';
+import { getNextStaticProps, is404 } from "@faustjs/next";
+import { Footer, Header, Hero } from "components";
+import { GetStaticPropsContext } from "next";
+import Head from "next/head";
+import { client, Page as PageType } from "client";
 
 export interface PageProps {
-  page: PageType | PageType['preview']['node'] | null | undefined;
+  page: PageType | PageType["preview"]["node"] | null | undefined;
 }
 
 export function PageComponent({ page }: PageProps) {
@@ -14,10 +14,7 @@ export function PageComponent({ page }: PageProps) {
 
   return (
     <>
-      <Header
-        title={generalSettings.title}
-        description={generalSettings.description}
-      />
+      <Header description={generalSettings.description} />
 
       <Head>
         <title>
@@ -32,7 +29,7 @@ export function PageComponent({ page }: PageProps) {
 
       <main className="content content-single">
         <div className="wrap">
-          <div dangerouslySetInnerHTML={{ __html: page?.content() ?? '' }} />
+          <div dangerouslySetInnerHTML={{ __html: page?.content() ?? "" }} />
         </div>
       </main>
 
@@ -59,6 +56,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 export function getStaticPaths() {
   return {
     paths: [],
-    fallback: 'blocking',
+    fallback: "blocking",
   };
 }

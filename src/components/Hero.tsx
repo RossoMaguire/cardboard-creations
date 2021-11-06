@@ -10,6 +10,7 @@ interface Props {
   button2Text?: string;
   button2URL?: string;
   children?: React.ReactNode;
+  hasOverlay?: boolean;
 }
 
 function Hero({
@@ -21,12 +22,16 @@ function Hero({
   button2Text,
   button2URL,
   children,
+  hasOverlay = true,
 }: Props): JSX.Element {
   return (
     <section
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...(id && { id })}
-      style={{ backgroundImage: bgImage ? `url(${bgImage})` : "none" }}
+      style={{
+        backgroundImage: bgImage ? `url(${bgImage})` : "none",
+        backgroundColor: hasOverlay && "#1f1f1f",
+      }}
       className={styles.hero}
     >
       <div className={styles.wrap}>

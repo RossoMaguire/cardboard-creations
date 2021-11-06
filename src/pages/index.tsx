@@ -1,13 +1,14 @@
 import { getNextStaticProps } from "@faustjs/next";
-
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
 import React from "react";
 import { CTA, Footer, Header, Hero, Posts } from "components";
 import styles from "scss/pages/home.module.scss";
 import { client } from "client";
+import BestSeller from "components/BestSeller";
+import axios from "axios";
 
-export default function Page() {
+export default function Page({ products }) {
   const { usePosts, useQuery } = client;
   const generalSettings = useQuery().generalSettings;
   const posts = usePosts({
@@ -20,16 +21,19 @@ export default function Page() {
   return (
     <>
       <Header description={generalSettings.description} />
-
       <Head>
         <title>
           {generalSettings.title} - {generalSettings.description}
         </title>
       </Head>
-
       <main className="content">
-        <Hero bgImage="/images/homepage-banner.jpeg" id={styles.home_hero} />
+        <Hero
+          bgImage="/images/homepage-banner.jpeg"
+          id={styles.home_hero}
+          hasOverlay={false}
+        />
         <section className={styles.explore}>
+          <BestSeller products={products.products} />
           <div className="wrap">
             <h2>Explore this Example Project</h2>
             <p>
@@ -113,8 +117,15 @@ export default function Page() {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
+  const { data: products } = await axios.get(
+    process.env.BASE_URL + "/api/woocommerce/products"
+  );
+  console.log(products);
   return getNextStaticProps(context, {
     Page,
     client,
+    props: {
+      products,
+    },
   });
 }

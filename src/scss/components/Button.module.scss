@@ -1,0 +1,7 @@
+.button-wrap {
+  display: block;
+}
+
+.button-wrap :global(.button) {
+  float: none;
+}

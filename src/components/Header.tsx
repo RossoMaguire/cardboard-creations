@@ -3,6 +3,7 @@ import styles from "scss/components/Header.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { client, MenuLocationEnum } from "client";
+import Button from "./Button";
 
 interface Props {
   title?: string;
@@ -49,11 +50,7 @@ function Header({ title, description }: Props): JSX.Element {
               </li>
             ))}
             <li>
-              <Link href="/shop">
-                <a className="button" href="/shop">
-                  Shop Now
-                </a>
-              </Link>
+              <Button buttonText="Shop Now" buttonURL="#" />
             </li>
           </ul>
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "scss/components/CTA.module.scss";
+import Button from "./Button";
 import Heading, { HeadingProps } from "./Heading";
 
 interface Props {
@@ -26,11 +27,7 @@ function CTA({
         <div className={styles.intro}>
           <div className={styles.children}>{children}</div>
           {buttonText && buttonURL && (
-            <div className={styles["button-wrap"]}>
-              <a href={buttonURL} className="button">
-                {buttonText}
-              </a>
-            </div>
+            <Button buttonText={buttonText} buttonURL={buttonURL} />
           )}
         </div>
       </div>

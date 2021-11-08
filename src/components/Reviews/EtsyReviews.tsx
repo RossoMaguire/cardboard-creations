@@ -34,7 +34,9 @@ function EtsyReviews(): JSX.Element {
           return (
             <div className={styles.feature} key={index}>
               <span>{review.stars}</span>
-              <h3>{review.title}</h3>
+              <div style={{ height: "60px" }}>
+                <h3>{review.title}</h3>
+              </div>
               <p>{review.name}</p>
             </div>
           );

@@ -8,6 +8,10 @@ import { client } from "client";
 import BestSeller from "components/Products/BestSeller";
 import axios from "axios";
 import EtsyReviews from "components/Reviews/EtsyReviews";
+import PromoBanner from "components/PromoBanner";
+import ImageGrid from "components/ImageGrid";
+import homeGridImages from "../repositories/imageGrid";
+import Button from "components/Button";
 
 export default function Page({ products }) {
   const { usePosts, useQuery } = client;
@@ -38,6 +42,23 @@ export default function Page({ products }) {
         </section>
         <section className={styles.explore}>
           <EtsyReviews />
+        </section>
+        <PromoBanner bgImage="/images/home-promo-banner.jpeg" />
+        <section className={styles.explore}>
+          <div className="wrap">
+            <div className={styles.images}>
+              <ImageGrid images={homeGridImages} />
+              <div className={styles.promo}>
+                <span>What makes us different</span>
+                <h3>ECO FRIENDLY & REUSABLE</h3>
+                <p>
+                  Our candy carts, home bars, ferris wheels and plinths are
+                  reusable and made from fully recyclable materials
+                </p>
+                <Button buttonText="Learn More" buttonURL="#" />
+              </div>
+            </div>
+          </div>
         </section>
         <Posts
           posts={posts.nodes}

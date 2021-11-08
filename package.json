@@ -12,8 +12,11 @@
     "wpe-build": "next build"
   },
   "dependencies": {
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
     "@faustjs/core": "^0.12.4",
     "@faustjs/next": "^0.13.0",
+    "@mui/material": "^5.0.6",
     "@types/woocommerce__woocommerce-rest-api": "^1.0.2",
     "@woocommerce/woocommerce-rest-api": "^1.0.1",
     "axios": "^0.24.0",

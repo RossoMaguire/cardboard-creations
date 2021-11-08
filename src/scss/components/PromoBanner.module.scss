@@ -1,0 +1,22 @@
+// CSS for the PromoBanner component in components/PromoBanner.tsx.
+
+@import "scss/variables";
+
+#promo_banner {
+  padding: 5em 0 6em;
+  background-color: $color-light-gray;
+}
+
+.promo {
+  background-color: $color-white;
+  padding: 20px;
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+  .promo_block {
+    column-gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px 0px 20px 0px;
+  }
+}

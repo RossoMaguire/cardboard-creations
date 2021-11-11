@@ -12,6 +12,7 @@ import PromoBanner from "components/PromoBanner";
 import ImageGrid from "components/ImageGrid";
 import homeGridImages from "../repositories/imageGrid";
 import Button from "components/Button";
+import BackgroundVideo from "components/BackgroundVideo";
 
 export default function Page({ products }) {
   const { usePosts, useQuery } = client;
@@ -43,7 +44,20 @@ export default function Page({ products }) {
         <section className={styles.explore}>
           <EtsyReviews />
         </section>
-        <PromoBanner bgImage="/images/home-promo-banner.jpeg" />
+        <section
+          className={styles.explore}
+          style={{
+            backgroundImage: "url('/images/home-promo-banner.jpeg')",
+          }}
+        >
+          <PromoBanner
+            tagline="Unique"
+            heading="Events and celebrations"
+            description="Add a touch of creativity to your next party or event with our
+            cardboard products"
+            buttonText="Party Ideas"
+          />
+        </section>
         <section className={styles.explore}>
           <div className="wrap">
             <div className={styles.images}>
@@ -59,6 +73,16 @@ export default function Page({ products }) {
               </div>
             </div>
           </div>
+        </section>
+        <section className={styles.explore}>
+          <PromoBanner
+            tagline="Quick"
+            heading="Easy Assembly"
+            description="Our cardboard products can be assembled by hand in a matter of minutes. No tools or screws required."
+            buttonText="Assembly Videos"
+            video
+          />
+          <BackgroundVideo source="/videos/candy-cart-assembly-video.mp4" />
         </section>
         <Posts
           posts={posts.nodes}

@@ -1,0 +1,14 @@
+.video_background {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 50vh;
+}
+
+.video_background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}

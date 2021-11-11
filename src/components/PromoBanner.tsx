@@ -3,32 +3,31 @@ import styles from "scss/components/PromoBanner.module.scss";
 import Button from "./Button";
 
 interface IPromoBannerProps {
-  bgImage?: string;
+  tagline: string;
+  heading: string;
+  description: string;
+  buttonText: string;
+  video?: boolean;
 }
 
-function PromoBanner({ bgImage }: IPromoBannerProps) {
+function PromoBanner({
+  tagline,
+  heading,
+  description,
+  buttonText,
+  video,
+}: IPromoBannerProps) {
   return (
-    <section
-      className={styles["promo-block"]}
-      {...styles.promo_banner}
-      style={{
-        backgroundImage: bgImage ? `url(${bgImage})` : "none",
-      }}
-    >
-      <div className="wrap">
-        <div className={styles.promo_block}>
-          <div className={styles.promo}>
-            <span>Unique</span>
-            <h3>Events and celebrations</h3>
-            <p>
-              Add a touch of creativity to your next party or event with our
-              cardboard products
-            </p>
-            <Button buttonText="Party Ideas" buttonURL="#" />
-          </div>
+    <div className={video ? "video_wrap" : "wrap"}>
+      <div className={styles.promo_block}>
+        <div className={styles.promo}>
+          <span>{tagline}</span>
+          <h3>{heading}</h3>
+          <p>{description}</p>
+          <Button buttonText={buttonText} buttonURL="#" />
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

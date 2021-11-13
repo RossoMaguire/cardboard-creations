@@ -11,10 +11,38 @@
     max-width: 40%; // Reduced from 80% on the front-page only to wrap the headline.
   }
 
+  .bestSeller {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    .productImage,
+    .productDetails {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+  }
+
+  .affiliates {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
   .features {
     column-gap: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+
+    .feature {
+      img {
+        width: 100%;
+        max-height: 290px;
+      }
+    }
   }
 
   .images {

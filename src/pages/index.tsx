@@ -2,10 +2,9 @@ import { getNextStaticProps } from "@faustjs/next";
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
 import React from "react";
-import { CTA, Footer, Header, Hero, Posts } from "components";
+import { CTA, Footer, Header, Hero } from "components";
 import styles from "scss/pages/home.module.scss";
 import { client } from "client";
-import BestSeller from "components/Products/BestSeller";
 import axios from "axios";
 import EtsyReviews from "components/Reviews/EtsyReviews";
 import PromoBanner from "components/PromoBanner";
@@ -13,6 +12,10 @@ import ImageGrid from "components/ImageGrid";
 import homeGridImages from "../repositories/imageGrid";
 import Button from "components/Button";
 import BackgroundVideo from "components/BackgroundVideo";
+import ContactForm from "components/ContactForm";
+import Affiliates from "components/Affiliates";
+import ProductDetail from "components/Products/ProductDetail";
+import ServiceGrid from "components/ServiceGrid";
 
 export default function Page({ products }) {
   const { usePosts, useQuery } = client;
@@ -23,6 +26,14 @@ export default function Page({ products }) {
       categoryName: "uncategorized",
     },
   });
+
+  const getBestSeller = ({ products }) => {
+    const featured = products.filter((product) => {
+      return product.featured;
+    });
+
+    return featured[0];
+  };
 
   return (
     <>
@@ -39,7 +50,7 @@ export default function Page({ products }) {
           hasOverlay={false}
         />
         <section className={styles.explore}>
-          <BestSeller products={products.products} />
+          <ProductDetail product={getBestSeller(products)} />
         </section>
         <section className={styles.explore}>
           <EtsyReviews />
@@ -84,14 +95,26 @@ export default function Page({ products }) {
           />
           <BackgroundVideo source="/videos/candy-cart-assembly-video.mp4" />
         </section>
-        <Posts
+        <section className={styles.explore}>
+          <ContactForm
+            heading="Curious about us?"
+            description="Get in touch to find out more about Cardboard Creations and our products."
+          />
+        </section>
+        <section className={styles.explore}>
+          <Affiliates />
+        </section>
+        <section className={styles.explore}>
+          <ServiceGrid />
+        </section>
+        {/* <Posts
           posts={posts.nodes}
           heading="Latest Posts"
           intro="The Posts component in src/pages/index.tsx shows the latest six posts from the connected WordPress site."
           headingLevel="h2"
           postTitleLevel="h3"
           id={styles.post_list}
-        />
+        /> */}
         <CTA
           title="Questions or comments?"
           buttonText="Join the discussion on GitHub"

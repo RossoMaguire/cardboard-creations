@@ -1,0 +1,19 @@
+// CSS for the index.tsx template.
+
+@import "scss/variables";
+
+@media screen and (min-width: $breakpoint-medium) {
+  .productDetail {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    .productImage,
+    .productDetails {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+  }
+}

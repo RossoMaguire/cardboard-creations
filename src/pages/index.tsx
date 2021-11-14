@@ -28,7 +28,7 @@ export default function Page({ products }) {
   });
 
   const getBestSeller = ({ products }) => {
-    const featured = products.filter((product) => {
+    const featured: Product = products.filter((product) => {
       return product.featured;
     });
 

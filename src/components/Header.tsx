@@ -11,6 +11,8 @@ interface Props {
 }
 
 function Header({ title, description }: Props): JSX.Element {
+  const [showCart, setShowCart] = React.useState(false); // we can change this if items are added to cart
+
   const { menuItems } = client.useQuery();
   const links = menuItems({
     where: { location: MenuLocationEnum.PRIMARY },
@@ -28,15 +30,17 @@ function Header({ title, description }: Props): JSX.Element {
               </Link>
             </p>
           ) : (
-            <div className={styles["logo-wrap"]}>
-              <Image
-                src={logo}
-                layout="responsive"
-                alt="Cardboard Creations Logo"
-                height={100}
-                width={100}
-              />
-            </div>
+            <Link href="/" passHref>
+              <div className={styles["logo-wrap"]}>
+                <Image
+                  src={logo}
+                  layout="responsive"
+                  alt="Cardboard Creations Logo"
+                  height={100}
+                  width={100}
+                />
+              </div>
+            </Link>
           )}
           {description && <p className={styles.description}>{description}</p>}
         </div>
@@ -49,9 +53,17 @@ function Header({ title, description }: Props): JSX.Element {
                 </Link>
               </li>
             ))}
-            <li>
-              <Button buttonText="Shop Now" buttonURL="#" />
+            <li key="Shop$-menu">
+              <Link href="/shop">Shop</Link>
             </li>
+            <li key="Chop$-menu">
+              <Link href="/contact">Contact</Link>
+            </li>
+            {showCart && (
+              <li>
+                <Button buttonText="Cart" buttonURL="/cart" />
+              </li>
+            )}
           </ul>
         </div>
       </div>

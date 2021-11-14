@@ -21,7 +21,7 @@ function ProductDetail({ product }: IBestSellerProps) {
         <div className={styles.productDetails}>
           <h2>Our Best Seller</h2>
           <h3>{product.name}</h3>
-          <p>{product.price}</p>
+          <p>€{product.price}</p>
           <Button buttonText="Add to cart" buttonURL="#" />
           <div dangerouslySetInnerHTML={{ __html: product.description }} />
         </div>

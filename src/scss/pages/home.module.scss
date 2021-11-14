@@ -6,9 +6,15 @@
   margin: 5em 0 5em;
 }
 
+#home_hero {
+  max-width: 2030px;
+  margin: 0 auto;
+}
+
 @media screen and (min-width: $breakpoint-medium) {
   #home_hero h1 {
     max-width: 40%; // Reduced from 80% on the front-page only to wrap the headline.
+
   }
 
   .bestSeller {

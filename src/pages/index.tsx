@@ -17,7 +17,7 @@ import Affiliates from "components/Affiliates";
 import ProductDetail from "components/Products/ProductDetail";
 import ServiceGrid from "components/ServiceGrid";
 
-export default function Page({ products }) {
+export default function Page({ products = null }) {
   const { usePosts, useQuery } = client;
   const generalSettings = useQuery().generalSettings;
   const posts = usePosts({
@@ -139,7 +139,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const { data: products } = await axios.get(
     process.env.BASE_URL + "/api/woocommerce/products"
   );
-  console.log(products);
   return getNextStaticProps(context, {
     Page,
     client,

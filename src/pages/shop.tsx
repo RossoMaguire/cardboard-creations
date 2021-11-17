@@ -10,7 +10,7 @@ import Head from "next/head";
 import React from "react";
 import Button from "components/Button";
 
-export default function Page({ products }) {
+export default function Page({ products = null }) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
 

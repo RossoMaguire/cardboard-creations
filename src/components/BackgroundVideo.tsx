@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "scss/components/VideoBackGround.module.scss";
+import styles from "scss/components/VideoBackground.module.scss";
 
 interface IBackgroundVideoProps {
   source: string;

@@ -1,5 +1,5 @@
-import { getNextStaticProps } from "@faustjs/next";
-import { GetStaticPropsContext } from "next";
+import { getNextServerSideProps, getNextStaticProps } from "@faustjs/next";
+import { GetServerSidePropsContext, GetStaticPropsContext } from "next";
 import Head from "next/head";
 import React from "react";
 import { CTA, Footer, Header, Hero } from "components";
@@ -135,11 +135,23 @@ export default function Page({ products = null }) {
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+// export async function getStaticProps(context: GetStaticPropsContext) {
+//   const { data: products } = await axios.get(
+//     process.env.BASE_URL + "/api/woocommerce/products"
+//   );
+//   return getNextStaticProps(context, {
+//     Page,
+//     client,
+//     props: {
+//       products,
+//     },
+//   });
+// }
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { data: products } = await axios.get(
     process.env.BASE_URL + "/api/woocommerce/products"
   );
-  return getNextStaticProps(context, {
+  return getNextServerSideProps(context, {
     Page,
     client,
     props: {

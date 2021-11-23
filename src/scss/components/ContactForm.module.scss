@@ -1,0 +1,27 @@
+.contact_form {
+  .doubleFields {
+    display: flex;
+  }
+
+  .singleField {
+    display: flex;
+  }
+
+  .field {
+    width: 100%;
+    padding: 10px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  input,
+  textarea {
+    border: 1px solid;
+    border-color: grey;
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+  }
+}

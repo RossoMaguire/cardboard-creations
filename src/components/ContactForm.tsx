@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import styles from "scss/components/ContactForm.module.scss";
+import Button from "./Button";
 
 interface IContactFormProps {
   heading: string;
@@ -39,37 +41,41 @@ function ContactForm({ heading, description }: IContactFormProps) {
       <h3>{heading}</h3>
       <p>{description}</p>
       <form onSubmit={handleSubmit}>
-        <div className="ui stacked segment">
-          <div className="field">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              name="name"
-              onChange={handleNameChange}
-              data-testid="contactField"
-              required
-            />
+        <div className={styles.contact_form}>
+          <div className={styles.doubleFields}>
+            <div className={styles.field}>
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                onChange={handleNameChange}
+                data-testid="contactField"
+                required
+              />
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                onChange={handleEmailChange}
+                data-testid="contactField"
+                required
+              />
+            </div>
           </div>
-          <div className="field">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              onChange={handleEmailChange}
-              data-testid="contactField"
-              required
-            />
+          <div className={styles.singleField}>
+            <div className={styles.field}>
+              <label htmlFor="message">Message</label>
+              <textarea
+                name="message"
+                onChange={handleMessageChange}
+                data-testid="contactField"
+                required
+              />
+            </div>
           </div>
-          <div className="field">
-            <label htmlFor="message">Message</label>
-            <textarea
-              name="message"
-              onChange={handleMessageChange}
-              data-testid="contactField"
-              required
-            />
-          </div>
-          <input type="submit" data-testid="contactField" value="Send" />
+          <Button dataTestId="contactField" buttonText="Send" />
         </div>
 
         <div id="create-error-msg" style={{ display: error }}>

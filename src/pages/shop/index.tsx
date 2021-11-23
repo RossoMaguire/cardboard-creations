@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import { getNextServerSideProps, getNextStaticProps } from "@faustjs/next";
+import { getNextServerSideProps } from "@faustjs/next";
 import axios from "axios";
-import styles from "./../scss/pages/shop.module.scss";
+import styles from "scss/pages/shop.module.scss";
 import _ from "lodash";
 import { client } from "client";
 import { Footer, Header, Hero } from "components";
-import { GetServerSidePropsContext, GetStaticPropsContext } from "next";
+import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import React from "react";
 import Button from "components/Button";
@@ -44,7 +44,10 @@ export default function Page({ products = null }) {
                   </div>
                   <p>€{product.price}</p>
                   <p>{product.name}</p>
-                  <Button buttonText="Details" buttonURL="#" />
+                  <Button
+                    buttonText="Details"
+                    buttonURL={`/shop/${product.slug}`}
+                  />
                 </div>
               ))}
             </div>

@@ -5,9 +5,10 @@ import Button from "components/Button";
 
 interface IBestSellerProps {
   product: Product;
+  isBestSeller?: boolean;
 }
 
-function ProductDetail({ product }: IBestSellerProps) {
+function ProductDetail({ product, isBestSeller }: IBestSellerProps) {
   return (
     <div className="wrap">
       <div className={styles.productDetail}>
@@ -19,7 +20,7 @@ function ProductDetail({ product }: IBestSellerProps) {
           />
         </div>
         <div className={styles.productDetails}>
-          <h2>Our Best Seller</h2>
+          {isBestSeller && <h2>Our Best Seller</h2>}
           <h3>{product.name}</h3>
           <p>€{product.price}</p>
           <Button buttonText="Add to cart" buttonURL="#" />

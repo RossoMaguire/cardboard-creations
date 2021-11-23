@@ -1,5 +1,5 @@
-import { getNextServerSideProps, getNextStaticProps } from "@faustjs/next";
-import { GetServerSidePropsContext, GetStaticPropsContext } from "next";
+import { getNextServerSideProps } from "@faustjs/next";
+import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import React from "react";
 import { CTA, Footer, Header, Hero } from "components";
@@ -50,7 +50,7 @@ export default function Page({ products = null }) {
           hasOverlay={false}
         />
         <section className={styles.explore}>
-          <ProductDetail product={getBestSeller(products)} />
+          <ProductDetail product={getBestSeller(products)} isBestSeller />
         </section>
         <section className={styles.explore}>
           <EtsyReviews />

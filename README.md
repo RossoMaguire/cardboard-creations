@@ -1,8 +1,10 @@
-# Next.js Headless WordPress Getting Started Example
+# Cardboard Creations - Next.js frontend web app
 
-## Setup
+## Introduction
 
-See the [setup steps](https://github.com/wpengine/faustjs#quick-start).
+This repo contains all the code for the app layer of Cardboard Creations website redevelopment for Final Project in Software Development at DBS.
+
+.. more information coming soon
 
 ## Run it
 

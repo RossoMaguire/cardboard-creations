@@ -1,23 +1,17 @@
 import React from "react";
 import styles from "scss/components/CTA.module.scss";
-import Button from "./Button";
 import Heading, { HeadingProps } from "./Heading";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 interface Props {
   title: string;
-  buttonText?: string;
-  buttonURL?: string;
   children?: React.ReactNode;
   headingLevel?: HeadingProps["level"];
 }
 
-function CTA({
-  title,
-  buttonText,
-  buttonURL,
-  children,
-  headingLevel = "h1",
-}: Props): JSX.Element {
+function CTA({ title, children, headingLevel = "h1" }: Props): JSX.Element {
   return (
     <section className={styles.cta}>
       <div className={styles.wrap}>
@@ -26,9 +20,9 @@ function CTA({
         </Heading>
         <div className={styles.intro}>
           <div className={styles.children}>{children}</div>
-          {buttonText && buttonURL && (
-            <Button buttonText={buttonText} buttonURL={buttonURL} />
-          )}
+          <InstagramIcon fontSize="large" />
+          <FacebookIcon fontSize="large" />
+          <TwitterIcon fontSize="large" />
         </div>
       </div>
     </section>

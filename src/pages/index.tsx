@@ -128,19 +128,8 @@ export default function Page({ products = null, reviews = null }) {
           postTitleLevel="h3"
           id={styles.post_list}
         /> */}
-        <CTA
-          title="Questions or comments?"
-          buttonText="Join the discussion on GitHub"
-          buttonURL="https://github.com/wpengine/faustjs/discussions"
-          headingLevel="h2"
-        >
-          <p>
-            We welcome feature requests, bug reports and questions in the{" "}
-            <a href="https://github.com/wpengine/faustjs">
-              Headless Framework GitHub repository
-            </a>
-            .
-          </p>
+        <CTA title="Questions or comments?" headingLevel="h2">
+          <p>Follow us on Social Media</p>
         </CTA>
       </main>
       <Footer copyrightHolder={generalSettings.title} />

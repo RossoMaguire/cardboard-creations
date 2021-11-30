@@ -17,7 +17,7 @@ import Affiliates from "components/Affiliates";
 import ProductDetail from "components/Products/ProductDetail";
 import ServiceGrid from "components/ServiceGrid";
 
-export default function Page({ products = null }) {
+export default function Page({ products = null, reviews = null }) {
   const { usePosts, useQuery } = client;
   const generalSettings = useQuery().generalSettings;
   const posts = usePosts({
@@ -33,6 +33,19 @@ export default function Page({ products = null }) {
     });
 
     return featured[0];
+  };
+
+  const getTopReviews = ({ results }) => {
+    const topRated: Review[] = results.filter((review) => {
+      return (
+        review.rating === 5 &&
+        review.language === "en" &&
+        review.review.length < 100 &&
+        review.review.length > 10
+      );
+    });
+
+    return topRated;
   };
 
   return (
@@ -53,7 +66,7 @@ export default function Page({ products = null }) {
           <ProductDetail product={getBestSeller(products)} isBestSeller />
         </section>
         <section className={styles.explore}>
-          <EtsyReviews />
+          <EtsyReviews topRated={getTopReviews(reviews)} />
         </section>
         <section
           className={styles.explore}
@@ -151,11 +164,15 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { data: products } = await axios.get(
     process.env.BASE_URL + "/api/woocommerce/products"
   );
+  const { data: reviews } = await axios.get(
+    process.env.BASE_URL + "/api/etsy/reviews"
+  );
   return getNextServerSideProps(context, {
     Page,
     client,
     props: {
       products,
+      reviews,
     },
   });
 }

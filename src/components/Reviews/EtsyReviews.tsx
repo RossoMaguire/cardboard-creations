@@ -1,43 +1,35 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import styles from "scss/components/EtsyReviews.module.scss";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 
-const reviewData = [
-  /* reviews from Etsy API will be here */
-  {
-    stars: "****",
-    title: "This looked great",
-    name: "Christie",
-  },
-  {
-    stars: "****",
-    title: "Perfect for my daughters ice cream themed birthday!",
-    name: "Ali",
-  },
-  {
-    stars: "****",
-    title: "I love the Candy Cart!",
-    name: "Sophia",
-  },
-];
+interface IEtsyReviewsProps {
+  topRated: Review[];
+}
 
-function EtsyReviews(): JSX.Element {
-  const [reviews, setReviews] = React.useState([]);
+function EtsyReviews({ topRated }: IEtsyReviewsProps): JSX.Element {
+  const [featuredReviews, setFeaturedReviews] = React.useState([]);
 
   React.useEffect(() => {
-    setReviews(reviewData);
-  }, []);
+    const featured = topRated.slice(0, 3);
+    setFeaturedReviews(featured);
+  }, [topRated]);
 
   return (
     <div className="wrap">
+      <img
+        alt="Etsy Logo Heart"
+        src="/images/etsy-logo-heart.jpeg"
+        style={{ height: "90px", width: "auto", float: "right" }}
+      />
       <div className={styles.features}>
-        {reviews.map((review, index) => {
+        {featuredReviews.map((review, index) => {
           return (
             <div className={styles.feature} key={index}>
-              <span>{review.stars}</span>
+              <span>{Array(review.rating).fill(<StarBorderIcon />)}</span>
               <div style={{ height: "60px" }}>
-                <h3>{review.title}</h3>
+                <h3>{review.review}</h3>
               </div>
-              <p>{review.name}</p>
             </div>
           );
         })}

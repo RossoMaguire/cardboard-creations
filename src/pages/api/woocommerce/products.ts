@@ -9,7 +9,7 @@ const api = new WooCommerceRestApi({
 
 type responseData = {
   success: boolean;
-  products: [];
+  products: Product[];
   error?: string;
 };
 

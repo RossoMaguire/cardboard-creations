@@ -56,6 +56,9 @@ function Header({ title, description }: Props): JSX.Element {
             <li key="Shop$-menu">
               <Link href="/shop">Shop</Link>
             </li>
+            <li key="FAQ$-menu">
+              <Link href="/faqs">FAQs</Link>
+            </li>
             <li key="Chop$-menu">
               <Link href="/contact">Contact</Link>
             </li>

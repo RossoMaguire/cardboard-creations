@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { getNextStaticProps } from "@faustjs/next";
-import styles from "scss/pages/home.module.scss";
+import styles from "scss/components/AssemblyVideos.module.scss";
 import { client } from "client";
 import { Footer, Header, Hero } from "components";
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
 import React from "react";
 import ServiceGrid from "components/ServiceGrid";
+import _ from "lodash";
 
 export default function Page({}) {
   const { useQuery } = client;
@@ -31,17 +32,22 @@ export default function Page({}) {
       <main className="content content-single">
         <div className="wrap">
           <h3>Assembly Videos</h3>
-          {assemblyVideos.map((video, index) => {
-            return (
-              <div className="assembly_video" key={index}>
-                <h3>{video.title}</h3>
-                <video width="320" height="240" controls>
-                  <source src={video.video.mediaItemUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            );
-          })}
+          {_.chunk(assemblyVideos, 3).map((chunk: any[], chunkIdx: any) => (
+            <div key={`row-${chunkIdx}`} className={styles.videos}>
+              {chunk.map((video, featureIdx) => (
+                <div className="assembly_video" key={featureIdx}>
+                  <h3>{video.title}</h3>
+                  <video width="320" height="240" controls>
+                    <source
+                      src={`${video.video.mediaItemUrl}#t=5`}
+                      type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
         <section className={styles.explore}>
           <ServiceGrid />

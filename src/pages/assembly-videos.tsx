@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { getNextStaticProps } from "@faustjs/next";
-import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import styles from "scss/pages/home.module.scss";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { client } from "client";
 import { Footer, Header, Hero } from "components";
 import { GetStaticPropsContext } from "next";
@@ -13,8 +11,9 @@ import ServiceGrid from "components/ServiceGrid";
 export default function Page({}) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
-  const faqs = useQuery().fAQs()?.nodes;
   const assemblyVideos = useQuery().assemblyVideos()?.nodes;
+
+  console.log(assemblyVideos);
 
   return (
     <>
@@ -24,31 +23,23 @@ export default function Page({}) {
       />
 
       <Head>
-        <title>FAQs - {generalSettings.title}</title>
+        <title>Assembly Videos - {generalSettings.title}</title>
       </Head>
 
-      <Hero title="FAQs" />
+      <Hero title="Assembly Videos" />
 
       <main className="content content-single">
         <div className="wrap">
-          <h3>FAQs</h3>
-          {faqs.map((faq, index) => {
+          <h3>Assembly Videos</h3>
+          {assemblyVideos.map((video, index) => {
             return (
-              <Accordion key="index">
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
-                  {faq.question}
-                </AccordionSummary>
-                <AccordionDetails>
-                  <div
-                    className="answer"
-                    dangerouslySetInnerHTML={{ __html: faq.answer }}
-                  ></div>
-                </AccordionDetails>
-              </Accordion>
+              <div className="assembly_video" key={index}>
+                <h3>{video.title}</h3>
+                <video width="320" height="240" controls>
+                  <source src={video.video.mediaItemUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             );
           })}
         </div>

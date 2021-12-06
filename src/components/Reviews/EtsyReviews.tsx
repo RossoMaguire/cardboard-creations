@@ -25,7 +25,10 @@ function EtsyReviews({ topRated }: IEtsyReviewsProps): JSX.Element {
       <div className={styles.features}>
         {featuredReviews.map((review, index) => {
           return (
-            <div className={styles.feature} key={index}>
+            <div
+              className={styles.feature}
+              key={`${index}-${review.buyer_user_id}`}
+            >
               <span>{Array(review.rating).fill(<StarBorderIcon />)}</span>
               <div style={{ height: "60px" }}>
                 <h3>{review.review}</h3>

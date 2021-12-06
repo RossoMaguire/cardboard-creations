@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import { useCartContext } from "components/common/CartContext";
 import styles from "scss/components/ProductDetail.module.scss";
 import Button from "components/Button";
 
@@ -9,6 +10,8 @@ interface IBestSellerProps {
 }
 
 function ProductDetail({ product, isBestSeller }: IBestSellerProps) {
+  const { cartCount, addToCart, removeFromCart } = useCartContext();
+
   return (
     <div className="wrap">
       <div className={styles.productDetail}>
@@ -23,7 +26,12 @@ function ProductDetail({ product, isBestSeller }: IBestSellerProps) {
           {isBestSeller && <h2>Our Best Seller</h2>}
           <h3>{product.name}</h3>
           <p>€{product.price}</p>
-          <Button buttonText="Add to cart" buttonURL="#" />
+          <p>QUANITY</p>
+          <div className={styles.cartButtons}>
+            <Button buttonText="-" handleClick={removeFromCart} />
+            <span>{cartCount}</span>
+            <Button buttonText="+" handleClick={addToCart} />
+          </div>
           <div dangerouslySetInnerHTML={{ __html: product.description }} />
         </div>
       </div>

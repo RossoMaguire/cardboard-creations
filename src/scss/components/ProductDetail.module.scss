@@ -2,6 +2,12 @@
 
 @import "scss/variables";
 
+.cartButtons {
+  display: flex;
+  justify-content: space-around;
+  width: 250px;
+}
+
 @media screen and (min-width: $breakpoint-medium) {
   .productDetail {
     display: flex;
@@ -14,6 +20,7 @@
       display: flex;
       flex: 1;
       flex-direction: column;
+      margin-left: 30px;
     }
   }
 }

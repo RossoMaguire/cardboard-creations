@@ -3,7 +3,9 @@ import styles from "scss/components/Header.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { client, MenuLocationEnum } from "client";
-import Button from "./Button";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useCartContext } from "./common/CartContext";
+import { Badge } from "@mui/material";
 
 interface Props {
   title?: string;
@@ -11,7 +13,7 @@ interface Props {
 }
 
 function Header({ title, description }: Props): JSX.Element {
-  const [showCart, setShowCart] = React.useState(false); // we can change this if items are added to cart
+  const { cartCount } = useCartContext();
 
   const { menuItems } = client.useQuery();
   const links = menuItems({
@@ -65,11 +67,11 @@ function Header({ title, description }: Props): JSX.Element {
             <li key="Contact$-menu">
               <Link href="/contact">Contact</Link>
             </li>
-            {showCart && (
-              <li>
-                <Button buttonText="Cart" buttonURL="/cart" />
-              </li>
-            )}
+            <li>
+              <Badge badgeContent={cartCount} color="primary">
+                <ShoppingCartIcon fontSize="large" />
+              </Badge>
+            </li>
           </ul>
         </div>
       </div>

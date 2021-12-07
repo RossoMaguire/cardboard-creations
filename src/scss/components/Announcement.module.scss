@@ -1,0 +1,16 @@
+// CSS for the Announcement component in components/Announcement.tsx.
+
+@import "scss/variables";
+
+.announcement {
+  position: relative;
+  overflow: hidden;
+  background-color: $main-green;
+  color: $color-white;
+  max-height: 37px;
+  transition: 0.3s;
+  text-align: center;
+  transition: max-height 0.3s cubic-bezier(0, 0, 0.38, 1);
+  transform: translateZ(0);
+  z-index: 9999999999;
+}

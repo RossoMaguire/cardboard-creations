@@ -1,51 +1,62 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import styles from "scss/components/Header.module.scss";
 import Link from "next/link";
-import Image from "next/image";
 import { client, MenuLocationEnum } from "client";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCartContext } from "./common/CartContext";
 import { Badge } from "@mui/material";
+import Announcement from "./Announcement";
 
 interface Props {
-  title?: string;
   description?: string;
 }
 
-function Header({ title, description }: Props): JSX.Element {
+function Header({ description }: Props): JSX.Element {
   const { cartCount } = useCartContext();
 
   const { menuItems } = client.useQuery();
   const links = menuItems({
     where: { location: MenuLocationEnum.PRIMARY },
   }).nodes;
-  const logo = "/images/cardboard-creations-logo.webp";
+
+  const shrinkHeader = (e) => {
+    const header = document.querySelector("#header");
+    const logo = document.querySelector("#logo");
+
+    const scrollTop = window.scrollY;
+    if (scrollTop >= 100) {
+      header.classList.add("shrink-header");
+      logo.classList.add("shrink-logo");
+    } else {
+      header.classList.remove("shrink-header");
+      logo.classList.remove("shrink-logo");
+    }
+  };
+
+  // Sticky Menu
+  React.useEffect(() => {
+    window.addEventListener("scroll", shrinkHeader);
+    return () => {
+      window.removeEventListener("scroll", shrinkHeader);
+    };
+  });
 
   return (
-    <header>
+    <header id="header" className="sticky">
+      <Announcement message="Wordlwide delivery available" />
       <div className={styles.wrap}>
-        <div className={styles["title-wrap"]}>
-          {title ? (
-            <p className={styles["site-title"]}>
-              <Link href="/">
-                <a>{title}</a>
-              </Link>
-            </p>
-          ) : (
-            <Link href="/" passHref>
-              <div className={styles["logo-wrap"]}>
-                <Image
-                  src={logo}
-                  layout="responsive"
-                  alt="Cardboard Creations Logo"
-                  height={100}
-                  width={100}
-                />
-              </div>
-            </Link>
-          )}
-          {description && <p className={styles.description}>{description}</p>}
-        </div>
+        <Link href="/" passHref>
+          <div className={styles["logo-wrap"]}>
+            <img
+              id="logo"
+              className="logo"
+              src="/images/cardboard-creations-logo.webp"
+              alt="CC Logo"
+            />
+          </div>
+        </Link>
+        {description && <p className={styles.description}>{description}</p>}
         <div className={styles.menu}>
           <ul>
             {links?.map((link) => (

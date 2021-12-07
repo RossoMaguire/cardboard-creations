@@ -2,20 +2,25 @@ import { getNextServerSideProps } from "@faustjs/next";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import React from "react";
-import { CTA, Footer, Header, Hero } from "components";
+import {
+  CTA,
+  Footer,
+  Header,
+  Hero,
+  EtsyReviews,
+  PromoBanner,
+  ImageGrid,
+  Button,
+  BackgroundVideo,
+  ContactForm,
+  Affiliates,
+  ProductDetail,
+  ServiceGrid,
+} from "components";
 import styles from "scss/pages/home.module.scss";
 import { client } from "client";
 import axios from "axios";
-import EtsyReviews from "components/Reviews/EtsyReviews";
-import PromoBanner from "components/PromoBanner";
-import ImageGrid from "components/ImageGrid";
-import homeGridImages from "../repositories/imageGrid";
-import Button from "components/Button";
-import BackgroundVideo from "components/BackgroundVideo";
-import ContactForm from "components/ContactForm";
-import Affiliates from "components/Affiliates";
-import ProductDetail from "components/Products/ProductDetail";
-import ServiceGrid from "components/ServiceGrid";
+import homeGridImages from "../repositories/image-grid";
 
 export default function Page({ products = null, reviews = null }) {
   const { usePosts, useQuery } = client;
@@ -56,7 +61,7 @@ export default function Page({ products = null, reviews = null }) {
           {generalSettings.title} - {generalSettings.description}
         </title>
       </Head>
-      <main className="content">
+      <main id={styles.home_page} className={`content ${styles.home_content}`}>
         <Hero
           bgImage="/images/homepage-banner.jpeg"
           id={styles.home_hero}

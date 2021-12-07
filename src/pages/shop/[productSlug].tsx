@@ -3,11 +3,10 @@ import { getNextStaticProps } from "@faustjs/next";
 import axios from "axios";
 import _ from "lodash";
 import { client } from "client";
-import { Footer, Header, Hero } from "components";
+import { Footer, Header, Hero, ProductDetail } from "components";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import React from "react";
-import ProductDetail from "components/Products/ProductDetail";
 
 export default function Page({ products = null, pageUri }) {
   const { useQuery } = client;
@@ -23,10 +22,7 @@ export default function Page({ products = null, pageUri }) {
 
   return (
     <>
-      <Header
-        title={generalSettings.title}
-        description={generalSettings.description}
-      />
+      <Header description={generalSettings.description} />
 
       <Head>
         <title>Product - {generalSettings.title}</title>

@@ -2,11 +2,10 @@
 import { getNextStaticProps } from "@faustjs/next";
 import styles from "scss/components/AssemblyVideos.module.scss";
 import { client } from "client";
-import { Footer, Header, Hero } from "components";
+import { Footer, Header, Hero, ServiceGrid } from "components";
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
 import React from "react";
-import ServiceGrid from "components/ServiceGrid";
 import _ from "lodash";
 
 export default function Page({}) {
@@ -18,10 +17,7 @@ export default function Page({}) {
 
   return (
     <>
-      <Header
-        title={generalSettings.title}
-        description={generalSettings.description}
-      />
+      <Header description={generalSettings.description} />
 
       <Head>
         <title>Assembly Videos - {generalSettings.title}</title>

@@ -2,14 +2,18 @@
 
 @import "scss/variables";
 
-.explore {
-  margin: 5em 0 5em;
-}
-
 #home_hero {
   max-width: 2030px;
   margin: 0 auto;
   padding: 15em 0 10em;
+}
+
+.explore {
+  margin: 5em 0 5em;
+}
+
+.home_content {
+  margin-top: 200px;
 }
 
 @media screen and (min-width: $breakpoint-medium) {

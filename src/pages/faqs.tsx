@@ -4,24 +4,19 @@ import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import styles from "scss/pages/home.module.scss";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { client } from "client";
-import { Footer, Header, Hero } from "components";
+import { Footer, Header, Hero, ServiceGrid } from "components";
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
 import React from "react";
-import ServiceGrid from "components/ServiceGrid";
 
 export default function Page({}) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
   const faqs = useQuery().fAQs()?.nodes;
-  const assemblyVideos = useQuery().assemblyVideos()?.nodes;
 
   return (
     <>
-      <Header
-        title={generalSettings.title}
-        description={generalSettings.description}
-      />
+      <Header description={generalSettings.description} />
 
       <Head>
         <title>FAQs - {generalSettings.title}</title>

@@ -14,19 +14,10 @@
   text-decoration: none;
 }
 
-.title-wrap {
-  padding: 20px 0 0;
-}
-
 .logo-wrap {
   min-width: 130px;
   cursor: pointer;
-}
-
-@media screen and (min-width: $breakpoint-small) {
-  .title-wrap {
-    padding: 20px 0;
-  }
+  padding: 20px 0 0;
 }
 
 .title-wrap .description {

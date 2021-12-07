@@ -1,6 +1,7 @@
 import "faust.config";
 import { FaustProvider } from "@faustjs/next";
 import "normalize.css/normalize.css";
+import "../utils/sticky-header/sticky-header.css";
 import React from "react";
 import "scss/main.scss";
 import { client } from "client";

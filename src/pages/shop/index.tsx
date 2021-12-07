@@ -4,11 +4,10 @@ import axios from "axios";
 import styles from "scss/pages/shop.module.scss";
 import _ from "lodash";
 import { client } from "client";
-import { Footer, Header, Hero } from "components";
+import { Footer, Header, Hero, Button } from "components";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import React from "react";
-import Button from "components/Button";
 
 export default function Page({ products = null }) {
   const { useQuery } = client;
@@ -18,10 +17,7 @@ export default function Page({ products = null }) {
 
   return (
     <>
-      <Header
-        title={generalSettings.title}
-        description={generalSettings.description}
-      />
+      <Header description={generalSettings.description} />
 
       <Head>
         <title>Shop - {generalSettings.title}</title>

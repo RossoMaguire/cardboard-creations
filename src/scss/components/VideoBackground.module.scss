@@ -1,6 +1,8 @@
 .video_background {
   position: relative;
   overflow: hidden;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
   width: 100vw;
   height: 50vh;
 }

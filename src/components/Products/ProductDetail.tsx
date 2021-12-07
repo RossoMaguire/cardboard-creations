@@ -26,7 +26,7 @@ function ProductDetail({ product, isBestSeller }: IBestSellerProps) {
           {isBestSeller && <h2>Our Best Seller</h2>}
           <h3>{product.name}</h3>
           <p>€{product.price}</p>
-          <p>QUANITY</p>
+          <p>QUANTITY</p>
           <div className={styles.cartButtons}>
             <Button buttonText="-" handleClick={removeFromCart} />
             <span>{cartCount}</span>

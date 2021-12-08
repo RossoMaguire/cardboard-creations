@@ -28,9 +28,15 @@ function ProductDetail({ product, isBestSeller }: IBestSellerProps) {
           <p>€{product.price}</p>
           <p>QUANTITY</p>
           <div className={styles.cartButtons}>
-            <Button buttonText="-" handleClick={removeFromCart} />
+            <Button
+              buttonText="-"
+              handleClick={() => removeFromCart(product.slug)}
+            />
             <span>{cartCount}</span>
-            <Button buttonText="+" handleClick={addToCart} />
+            <Button
+              buttonText="+"
+              handleClick={() => addToCart(product.slug)}
+            />
           </div>
           <div dangerouslySetInnerHTML={{ __html: product.description }} />
         </div>

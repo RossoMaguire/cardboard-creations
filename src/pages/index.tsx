@@ -88,6 +88,7 @@ export default function Page({ products = null, reviews = null }) {
             description="Add a touch of creativity to your next party or event with our
             cardboard products"
             buttonText="Party Ideas"
+            buttonUrl="/customer-photos"
           />
         </section>
         <section className={styles.explore}>
@@ -112,6 +113,7 @@ export default function Page({ products = null, reviews = null }) {
             heading="Easy Assembly"
             description="Our cardboard products can be assembled by hand in a matter of minutes. No tools or screws required."
             buttonText="Assembly Videos"
+            buttonUrl="/assembly-videos"
             video
           />
           <BackgroundVideo source="/videos/candy-cart-assembly-video.mp4" />

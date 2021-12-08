@@ -7,6 +7,7 @@ interface IPromoBannerProps {
   heading: string;
   description: string;
   buttonText: string;
+  buttonUrl: string;
   video?: boolean;
 }
 
@@ -15,6 +16,7 @@ function PromoBanner({
   heading,
   description,
   buttonText,
+  buttonUrl,
   video,
 }: IPromoBannerProps) {
   return (
@@ -24,7 +26,7 @@ function PromoBanner({
           <span>{tagline}</span>
           <h3>{heading}</h3>
           <p>{description}</p>
-          <Button buttonText={buttonText} buttonURL="#" />
+          <Button buttonText={buttonText} buttonURL={buttonUrl} />
         </div>
       </div>
     </div>

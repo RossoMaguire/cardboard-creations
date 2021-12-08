@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import styles from "scss/components/Button.module.scss";
 
@@ -20,9 +21,13 @@ function Button({
       data-testid={dataTestId}
       onClick={handleClick}
     >
-      <a href={buttonURL} className="button">
-        {buttonText}
-      </a>
+      {buttonURL ? (
+        <Link href={buttonURL} passHref>
+          <span className="button">{buttonText}</span>
+        </Link>
+      ) : (
+        <span className="button">{buttonText}</span>
+      )}
     </div>
   );
 }

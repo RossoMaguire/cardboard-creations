@@ -1,7 +1,13 @@
 declare type CartContext = {
   cartCount: number;
-  addToCart: () => void;
-  removeFromCart: () => void;
+  items: Item[];
+  addToCart: Function;
+  removeFromCart: Function;
+};
+
+declare type Item = {
+  name: string;
+  count: number;
 };
 
 declare interface ICartContextProps {

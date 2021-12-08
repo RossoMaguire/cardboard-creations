@@ -4,7 +4,7 @@ import axios from "axios";
 import _ from "lodash";
 import { client } from "client";
 import { Footer, Header, Hero, ProductDetail } from "components";
-import { GetServerSidePropsContext } from "next";
+import { GetStaticPropsContext } from "next";
 import Head from "next/head";
 import React from "react";
 
@@ -28,7 +28,10 @@ export default function Page({ products = null, pageUri }) {
         <title>Product - {generalSettings.title}</title>
       </Head>
 
-      <Hero title={generalSettings.title} />
+      <Hero
+        title={getThisProduct(products).name}
+        bgImage={getThisProduct(products).images[0].src}
+      />
 
       <main className="content content-single">
         <div className="wrap">
@@ -42,7 +45,7 @@ export default function Page({ products = null, pageUri }) {
   );
 }
 
-export async function getStaticProps(context: GetServerSidePropsContext) {
+export async function getStaticProps(context: GetStaticPropsContext) {
   const { data: products } = await axios.get(
     process.env.BASE_URL + "/api/woocommerce/products"
   );

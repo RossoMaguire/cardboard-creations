@@ -45,8 +45,11 @@ export default function Page({ products = null, reviews = null }) {
       return (
         review.rating === 5 &&
         review.language === "en" &&
-        review.review.length < 100 &&
-        review.review.length > 10
+        review.review.length < 500 &&
+        review.review.length > 10 &&
+        !review.review.includes("&#") &&
+        !review.review.includes(";") &&
+        !review.review.includes("instructions")
       );
     });
 

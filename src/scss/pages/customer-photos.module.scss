@@ -1,0 +1,22 @@
+// CSS for the customer-photos.tsx template.
+
+@import "scss/variables";
+
+@media screen and (min-width: $breakpoint-medium) {
+  .customerPhotos {
+    column-gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 80px;
+
+    .customerPhoto {
+      max-height: 500px;
+      overflow: hidden;
+    }
+    img {
+      width: 100%;
+      object-position: top left;
+      object-fit: cover;
+    }
+  }
+}

@@ -2,6 +2,8 @@ import { useEffect, createContext, useContext, useState } from "react";
 
 const cartDefaultValues: CartContext = {
   cartCount: 0,
+  productsInCart: [] as Product[],
+  setProductsInCart: () => {},
   items: [],
   addToCart: () => {},
   removeFromCart: () => {},
@@ -16,6 +18,7 @@ export function useCartContext() {
 export function CartProvider({ children }: ICartContextProps) {
   const [cartCount, setCartCount] = useState<number>(0);
   const [items, setItems] = useState<Item[]>([] as Item[]);
+  const [productsInCart, setProductsInCart] = useState([] as Product[]);
 
   useEffect(() => {
     localStorage.setItem("CardboardCreationsCartItems", JSON.stringify(items));
@@ -54,6 +57,8 @@ export function CartProvider({ children }: ICartContextProps) {
   const value = {
     cartCount,
     items,
+    productsInCart,
+    setProductsInCart,
     addToCart,
     removeFromCart,
   };

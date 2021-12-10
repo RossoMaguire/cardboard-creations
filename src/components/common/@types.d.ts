@@ -1,6 +1,8 @@
 declare type CartContext = {
   cartCount: number;
   items: Item[];
+  setProductsInCart: Function;
+  productsInCart: Product[];
   addToCart: Function;
   removeFromCart: Function;
 };

@@ -79,9 +79,15 @@ function Header({ description }: Props): JSX.Element {
               <Link href="/contact">Contact</Link>
             </li>
             <li>
-              <Badge badgeContent={cartCount} color="primary">
-                <ShoppingCartIcon fontSize="large" />
-              </Badge>
+              <Link href="/shop/cart" passHref>
+                <Badge
+                  badgeContent={cartCount}
+                  color="primary"
+                  style={{ cursor: "pointer" }}
+                >
+                  <ShoppingCartIcon fontSize="large" />
+                </Badge>
+              </Link>
             </li>
           </ul>
         </div>

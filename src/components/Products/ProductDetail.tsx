@@ -10,7 +10,14 @@ interface IBestSellerProps {
 }
 
 function ProductDetail({ product, isBestSeller }: IBestSellerProps) {
-  const { cartCount, addToCart, removeFromCart } = useCartContext();
+  const { cartCount, addToCart, removeFromCart, items } = useCartContext();
+  const [itemCount, setItemCount] = React.useState(0);
+
+  React.useEffect(() => {
+    const thisItem = items.filter((item: Item) => item.name === product.slug);
+
+    thisItem.length !== 0 ? setItemCount(thisItem[0].count) : setItemCount(0);
+  }, [product.slug, cartCount, items]);
 
   return (
     <div className="wrap">
@@ -32,7 +39,7 @@ function ProductDetail({ product, isBestSeller }: IBestSellerProps) {
               buttonText="-"
               handleClick={() => removeFromCart(product.slug)}
             />
-            <span>{cartCount}</span>
+            <span>{itemCount}</span>
             <Button
               buttonText="+"
               handleClick={() => addToCart(product.slug)}

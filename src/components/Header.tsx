@@ -44,7 +44,7 @@ function Header({ description }: Props): JSX.Element {
 
   return (
     <header id="header" className="sticky">
-      <Announcement message="Wordlwide delivery available" />
+      <Announcement message="Worldwide delivery available" />
       <div className={styles.wrap}>
         <Link href="/" passHref>
           <div className={styles["logo-wrap"]}>

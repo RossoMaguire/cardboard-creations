@@ -7,11 +7,11 @@ interface IBackgroundVideoProps {
   blur?: string;
 }
 
-const BackgroundVideo = ({ source, children, blur }: IBackgroundVideoProps) => {
+const BackgroundVideo = ({ source, children }: IBackgroundVideoProps) => {
   return (
     <div className={styles.video_background}>
       <video autoPlay loop muted id="video-id" className="video">
-        <source src={source} type="video/mp4" />
+        <source src={`${source}#t=5`} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       {children}

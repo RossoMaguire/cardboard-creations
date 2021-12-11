@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { getNextStaticProps } from "@faustjs/next";
+import { getNextServerSideProps } from "@faustjs/next";
 import { client } from "client";
 import { Footer, Header } from "components";
-import { GetStaticPropsContext } from "next";
+import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import styles from "scss/pages/customer-photos.module.scss";
 import { useCartContext } from "components/common/CartContext";
@@ -66,12 +66,12 @@ export default function Page({ products }) {
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { data: products } = await axios.get(
     process.env.BASE_URL + "/api/woocommerce/products"
   );
 
-  return getNextStaticProps(context, {
+  return getNextServerSideProps(context, {
     Page,
     client,
     props: {

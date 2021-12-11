@@ -57,6 +57,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
       products,
       pageUri: context.params.productSlug,
     },
+    revalidate: 10,
   });
 }
 

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { Dispatch, SetStateAction } from "react";
 
-import styles from "scss/components/item.module.scss";
+import styles from "scss/components/Item.module.scss";
 
 interface IItemProps {
   items: Item[];

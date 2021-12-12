@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { Dispatch, SetStateAction } from "react";
+
 import styles from "scss/components/item.module.scss";
 
 interface IItemProps {

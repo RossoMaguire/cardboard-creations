@@ -1,6 +1,7 @@
+import { Footer, Header, Hero } from "../components";
+
 import React from "react";
 import { client } from "client";
-import { Header, Hero, Footer } from "../components";
 
 export default function Page(): JSX.Element {
   const { useQuery } = client;

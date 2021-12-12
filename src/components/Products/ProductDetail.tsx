@@ -1,8 +1,8 @@
+import Button from "components/Button";
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { useCartContext } from "components/common/CartContext";
 import styles from "scss/components/ProductDetail.module.scss";
-import Button from "components/Button";
+import { useCartContext } from "components/common/CartContext";
 
 interface IBestSellerProps {
   product: Product;

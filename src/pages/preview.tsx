@@ -1,6 +1,6 @@
-import { PageComponent } from './[...pageUri]';
-import { PostComponent } from './posts/[postSlug]';
-import { client } from 'client';
+import { PageComponent } from "./[...pageUri]";
+import { PostComponent } from "./posts/[postSlug]";
+import { client } from "client";
 
 export default function Preview() {
   const { usePreview } = client.auth;
@@ -10,7 +10,7 @@ export default function Preview() {
     return <p>loading...</p>;
   }
 
-  if (result.type === 'page') {
+  if (result.type === "page") {
     if (!result.page) {
       return <>Not Found</>;
     }

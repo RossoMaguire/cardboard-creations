@@ -1,12 +1,13 @@
+import { MenuLocationEnum, client } from "client";
+
+import Announcement from "./Announcement";
+import { Badge } from "@mui/material";
+import Link from "next/link";
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import styles from "scss/components/Header.module.scss";
-import Link from "next/link";
-import { client, MenuLocationEnum } from "client";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import styles from "scss/components/Header.module.scss";
 import { useCartContext } from "./common/CartContext";
-import { Badge } from "@mui/material";
-import Announcement from "./Announcement";
 
 interface Props {
   description?: string;

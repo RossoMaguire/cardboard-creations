@@ -1,9 +1,10 @@
+import { Footer, Header, Pagination, Posts } from "components";
 import { getNextStaticProps, is404 } from "@faustjs/next";
-import Head from "next/head";
-import { Header, Footer, Posts, Pagination } from "components";
+
 import { GetStaticPropsContext } from "next";
-import { useRouter } from "next/router";
+import Head from "next/head";
 import { client } from "client";
+import { useRouter } from "next/router";
 
 const POSTS_PER_PAGE = 6;
 

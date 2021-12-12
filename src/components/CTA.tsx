@@ -1,9 +1,10 @@
-import React from "react";
-import styles from "scss/components/CTA.module.scss";
 import Heading, { HeadingProps } from "./Heading";
+
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import React from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import styles from "scss/components/CTA.module.scss";
 
 interface Props {
   title: string;

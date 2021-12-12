@@ -1,9 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
-import { getNextStaticProps } from "@faustjs/next";
-import { client } from "client";
 import { Footer, Header, Hero } from "components";
+
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
+import { client } from "client";
+/* eslint-disable @next/next/no-img-element */
+import { getNextStaticProps } from "@faustjs/next";
 import styles from "scss/pages/customer-photos.module.scss";
 
 export default function Page() {

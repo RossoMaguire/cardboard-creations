@@ -1,7 +1,7 @@
+import Button from "./Button";
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import styles from "scss/pages/home.module.scss";
-import Button from "./Button";
 
 function ServiceGrid() {
   return (

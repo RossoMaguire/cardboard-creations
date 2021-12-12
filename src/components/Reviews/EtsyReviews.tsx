@@ -1,10 +1,11 @@
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+import { Carousel } from "react-responsive-carousel";
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import styles from "scss/components/EtsyReviews.module.scss";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
 import _ from "lodash";
+import styles from "scss/components/EtsyReviews.module.scss";
 
 interface IEtsyReviewsProps {
   topRated: Review[];

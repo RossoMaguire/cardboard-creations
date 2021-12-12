@@ -1,13 +1,14 @@
-/* eslint-disable @next/next/no-img-element */
-import { getNextStaticProps } from "@faustjs/next";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
-import styles from "scss/pages/home.module.scss";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { client } from "client";
 import { Footer, Header, Hero, ServiceGrid } from "components";
+
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
 import React from "react";
+import { client } from "client";
+/* eslint-disable @next/next/no-img-element */
+import { getNextStaticProps } from "@faustjs/next";
+import styles from "scss/pages/home.module.scss";
 
 export default function Page({}) {
   const { useQuery } = client;

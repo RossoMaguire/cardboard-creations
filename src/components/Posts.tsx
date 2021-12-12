@@ -1,8 +1,9 @@
-import React from "react";
+import Heading, { HeadingProps } from "./Heading";
+
 import Link from "next/link";
 import type { Post } from "client";
+import React from "react";
 import styles from "scss/components/Posts.module.scss";
-import Heading, { HeadingProps } from "./Heading";
 
 interface Props {
   posts: Post[] | undefined;

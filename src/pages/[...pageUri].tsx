@@ -1,8 +1,9 @@
-import { getNextStaticProps, is404 } from "@faustjs/next";
 import { Footer, Header, Hero } from "components";
+import { Page as PageType, client } from "client";
+import { getNextStaticProps, is404 } from "@faustjs/next";
+
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
-import { client, Page as PageType } from "client";
 
 export interface PageProps {
   page: PageType | PageType["preview"]["node"] | null | undefined;

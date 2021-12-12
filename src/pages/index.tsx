@@ -1,26 +1,27 @@
-import { getNextServerSideProps } from "@faustjs/next";
-import { GetServerSidePropsContext } from "next";
-import Head from "next/head";
-import React from "react";
 import {
+  Affiliates,
+  BackgroundVideo,
+  Button,
   CTA,
+  ContactForm,
+  EtsyReviews,
   Footer,
   Header,
   Hero,
-  EtsyReviews,
-  PromoBanner,
   ImageGrid,
-  Button,
-  BackgroundVideo,
-  ContactForm,
-  Affiliates,
   ProductDetail,
+  PromoBanner,
   ServiceGrid,
 } from "components";
-import styles from "scss/pages/home.module.scss";
-import { client } from "client";
+
+import { GetServerSidePropsContext } from "next";
+import Head from "next/head";
+import React from "react";
 import axios from "axios";
+import { client } from "client";
+import { getNextServerSideProps } from "@faustjs/next";
 import homeGridImages from "../repositories/image-grid";
+import styles from "scss/pages/home.module.scss";
 
 export default function Page({ products = null, reviews = null }) {
   const { usePosts, useQuery } = client;

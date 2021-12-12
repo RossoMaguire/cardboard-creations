@@ -1,12 +1,13 @@
-/* eslint-disable @next/next/no-img-element */
-import { getNextStaticProps } from "@faustjs/next";
-import styles from "scss/components/AssemblyVideos.module.scss";
-import { client } from "client";
 import { Footer, Header, Hero, ServiceGrid } from "components";
+
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
 import React from "react";
 import _ from "lodash";
+import { client } from "client";
+/* eslint-disable @next/next/no-img-element */
+import { getNextStaticProps } from "@faustjs/next";
+import styles from "scss/components/AssemblyVideos.module.scss";
 
 export default function Page({}) {
   const { useQuery } = client;

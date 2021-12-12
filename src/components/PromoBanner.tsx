@@ -1,6 +1,6 @@
+import Button from "./Button";
 import React from "react";
 import styles from "scss/components/PromoBanner.module.scss";
-import Button from "./Button";
 
 interface IPromoBannerProps {
   tagline: string;

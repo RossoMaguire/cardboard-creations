@@ -13,8 +13,6 @@ export default function Page({}) {
   const generalSettings = useQuery().generalSettings;
   const assemblyVideos = useQuery().assemblyVideos()?.nodes;
 
-  console.log(assemblyVideos);
-
   return (
     <>
       <Header description={generalSettings.description} />
@@ -23,10 +21,10 @@ export default function Page({}) {
         <title>Assembly Videos - {generalSettings.title}</title>
       </Head>
 
-      <Hero title="Assembly Videos" />
+      <Hero title="Assembly Videos" bgImage="/images/assembly-hero.png" />
 
       <main className="content content-single">
-        <div className="wrap">
+        <div className="wrap" style={{ borderBottom: "1px solid black" }}>
           <h3>Assembly Videos</h3>
           {_.chunk(assemblyVideos, 3).map((chunk: any[], chunkIdx: any) => (
             <div key={`row-${chunkIdx}`} className={styles.videos}>

@@ -33,7 +33,7 @@ function ProductDetail({ product, isBestSeller }: IBestSellerProps) {
           {isBestSeller && <h2>Our Best Seller</h2>}
           <h3>{product.name}</h3>
           <p>€{product.price}</p>
-          <p>QUANTITY</p>
+          <p style={{ fontWeight: "bold" }}>Quantity</p>
           <div className={styles.cartButtons}>
             <Button
               buttonText="-"
@@ -42,7 +42,7 @@ function ProductDetail({ product, isBestSeller }: IBestSellerProps) {
             <span>{itemCount}</span>
             <Button
               buttonText="+"
-              handleClick={() => addToCart(product.slug)}
+              handleClick={() => addToCart(product.slug, product.price)}
             />
           </div>
           <div dangerouslySetInnerHTML={{ __html: product.description }} />

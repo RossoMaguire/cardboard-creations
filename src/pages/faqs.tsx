@@ -22,7 +22,7 @@ export default function Page({}) {
         <title>FAQs - {generalSettings.title}</title>
       </Head>
 
-      <Hero title="FAQs" />
+      <Hero title="FAQs" bgImage="/images/headless_hero_background.jpg" />
 
       <main className="content content-single">
         <div className="wrap">

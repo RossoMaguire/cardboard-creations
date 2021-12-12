@@ -19,7 +19,7 @@ export default function Page() {
         <title>Customer Photos - {generalSettings.title}</title>
       </Head>
 
-      <Hero title="Customer Photos" />
+      <Hero title="Customer Photos" bgImage={photos[0].guid} />
 
       <main className="content content-single">
         <div className="wrap">

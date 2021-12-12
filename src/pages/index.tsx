@@ -102,7 +102,10 @@ export default function Page({ products = null, reviews = null }) {
                   Our candy carts, home bars, ferris wheels and plinths are
                   reusable and made from fully recyclable materials
                 </p>
-                <Button buttonText="Learn More" buttonURL="#" />
+                <Button
+                  buttonText="Learn More"
+                  buttonURL="/posts/eco-friendly"
+                />
               </div>
             </div>
           </div>

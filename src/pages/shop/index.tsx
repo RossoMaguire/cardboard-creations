@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import { getNextServerSideProps, getNextStaticProps } from "@faustjs/next";
+import React from "react";
 import axios from "axios";
+import Head from "next/head";
+import { GetServerSidePropsContext } from "next";
+import { Footer, Header, Hero, Button } from "components";
 import styles from "scss/pages/shop.module.scss";
+import { getNextServerSideProps } from "@faustjs/next";
 import _ from "lodash";
 import { client } from "client";
-import { Footer, Header, Hero, Button } from "components";
-import { GetServerSidePropsContext } from "next";
-import Head from "next/head";
-import React from "react";
 
 export default function Page({ products = null }) {
   const { useQuery } = client;
@@ -23,7 +23,7 @@ export default function Page({ products = null }) {
         <title>Shop - {generalSettings.title}</title>
       </Head>
 
-      <Hero title="Shop" />
+      <Hero title="Shop" bgImage="images/home-promo-banner.jpeg" />
 
       <main className="content content-single">
         <div className="wrap">

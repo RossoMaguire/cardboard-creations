@@ -5,9 +5,11 @@ import { client } from "client";
 import { Footer, Header } from "components";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
-import styles from "scss/pages/customer-photos.module.scss";
+import styles from "scss/pages/cart.module.scss";
 import { useCartContext } from "components/common/CartContext";
 import axios from "axios";
+import Link from "next/link";
+import Item from "components/Cart/Item";
 
 export default function Page({ products }) {
   const { useQuery } = client;
@@ -15,6 +17,7 @@ export default function Page({ products }) {
 
   const { productsInCart, setProductsInCart, items } = useCartContext();
   const [itemNames, setItemNames] = React.useState<string[]>([]);
+  const [totalAmount, setTotalAmount] = React.useState<number>(0);
 
   React.useEffect(() => {
     const slugs = items.map((item) => item.name);
@@ -29,17 +32,9 @@ export default function Page({ products }) {
     setProductsInCart(inventory);
   }, [itemNames, products.products, setProductsInCart]);
 
-  const getItemQuantity = (name: string) => {
-    const sameName = items.filter((item) => {
-      return item.name === name;
-    });
-
-    return sameName[0].count;
-  };
-
   return (
     <>
-      <Header description={generalSettings.description} />
+      <Header description={generalSettings.description} notSticky />
 
       <Head>
         <title>Cart - {generalSettings.title}</title>
@@ -47,17 +42,36 @@ export default function Page({ products }) {
 
       <main className="content content-single">
         <div className="wrap">
-          <div className={styles.customerPhotos}>
-            {productsInCart.map((product) => {
-              return (
-                <div className="cart-item" key={product.id}>
-                  <img src={product.images[0].src} alt={product.name} />
-                  <p>{product.name}</p>
-                  <p>Quantity: {getItemQuantity(product.slug)}</p>
-                </div>
-              );
-            })}
-          </div>
+          {items.length > 0 ? (
+            <>
+              <div className={styles.cartItems}>
+                {productsInCart.map((product) => {
+                  return (
+                    <Item
+                      items={items}
+                      product={product}
+                      key={product.id}
+                      setTotalAmount={setTotalAmount}
+                    />
+                  );
+                })}
+              </div>
+              <div className={styles.total}>
+                <p>
+                  <span style={{ fontWeight: "bold" }}>
+                    Total: €{totalAmount}
+                  </span>
+                </p>
+              </div>
+            </>
+          ) : (
+            <>
+              <h2>No Products in Cart</h2>
+              <p>
+                Visit the <Link href="/shop">Shop</Link> to get started
+              </p>
+            </>
+          )}
         </div>
       </main>
 

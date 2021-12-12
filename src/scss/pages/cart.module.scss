@@ -1,0 +1,17 @@
+// CSS for the cart.tsx template.
+
+@import "scss/variables";
+
+@media screen and (min-width: $breakpoint-medium) {
+  .cartItems {
+    margin-bottom: 80px;
+  }
+
+  .total {
+    border-top: 1px solid black;
+
+    p {
+      float: right;
+    }
+  }
+}

@@ -10,6 +10,7 @@ declare type CartContext = {
 declare type Item = {
   name: string;
   count: number;
+  price: number;
 };
 
 declare interface ICartContextProps {

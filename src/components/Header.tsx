@@ -10,9 +10,10 @@ import Announcement from "./Announcement";
 
 interface Props {
   description?: string;
+  notSticky?: boolean;
 }
 
-function Header({ description }: Props): JSX.Element {
+function Header({ description, notSticky }: Props): JSX.Element {
   const { cartCount } = useCartContext();
 
   const { menuItems } = client.useQuery();
@@ -43,7 +44,7 @@ function Header({ description }: Props): JSX.Element {
   });
 
   return (
-    <header id="header" className="sticky">
+    <header id="header" className={`${notSticky ? "" : "sticky"}`}>
       <Announcement message="Worldwide delivery available" />
       <div className={styles.wrap}>
         <Link href="/" passHref>

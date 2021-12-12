@@ -4,7 +4,7 @@ const cartDefaultValues: CartContext = {
   cartCount: 0,
   productsInCart: [] as Product[],
   setProductsInCart: () => {},
-  items: [],
+  items: [] as Item[],
   addToCart: () => {},
   removeFromCart: () => {},
 };
@@ -24,18 +24,20 @@ export function CartProvider({ children }: ICartContextProps) {
     localStorage.setItem("CardboardCreationsCartItems", JSON.stringify(items));
   }, [items]);
 
-  const addToCart = async (name: string) => {
+  const addToCart = async (name: string, price: string) => {
     setCartCount(cartCount + 1);
     setItems((prevState) => {
       const isItemInCart = prevState.find((item) => item.name === name);
 
       if (isItemInCart) {
         return prevState.map((item) =>
-          item.name === name ? { ...item, count: item.count + 1 } : item
+          item.name === name
+            ? { ...item, count: item.count + 1, price: item.price }
+            : item
         );
       }
 
-      return [...prevState, { name, count: 1 }];
+      return [...prevState, { name, count: 1, price: parseFloat(price) }];
     });
     localStorage.setItem("CardboardCreationsCartItems", JSON.stringify(items));
   };
@@ -46,7 +48,10 @@ export function CartProvider({ children }: ICartContextProps) {
       return prevState.reduce((ack, item) => {
         if (item.name === name) {
           if (item.count === 1) return ack;
-          return [...ack, { ...item, count: item.count - 1 }];
+          return [
+            ...ack,
+            { ...item, count: item.count - 1, price: item.price },
+          ];
         } else {
           return [...ack, item];
         }

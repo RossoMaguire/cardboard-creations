@@ -27,10 +27,15 @@ function Button({
     >
       {buttonURL ? (
         <Link href={buttonURL} passHref>
-          <span className="button">{buttonText}</span>
+          <span className="button" data-testid="link-button">
+            {buttonText}
+          </span>
         </Link>
       ) : (
-        <span className={disabled ? "disabled-button" : "button"}>
+        <span
+          data-testid="disabled-button"
+          className={disabled ? "disabled-button" : "button"}
+        >
           {buttonText}
         </span>
       )}

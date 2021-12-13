@@ -1,29 +1,6 @@
 import React from "react";
+import { logos } from "../utils/data/affiliate-logos";
 import styles from "scss/pages/home.module.scss";
-
-type AffiliateLogo = {
-  src: string;
-  alt: string;
-};
-
-const logos: AffiliateLogo[] = [
-  {
-    src: "local-enterprise-office.webp",
-    alt: "Local Enterprise Office",
-  },
-  {
-    src: "kildare-county-council.webp",
-    alt: "Kildare County Council",
-  },
-  {
-    src: "structural-investment-group.webp",
-    alt: "EU Structural Investment Group",
-  },
-  {
-    src: "european-union.webp",
-    alt: "European Union",
-  },
-];
 
 function Affiliates() {
   return (
@@ -44,6 +21,7 @@ function Affiliates() {
                 src={`/images/affiliates/${logo.src}`}
                 alt={logo.alt}
                 style={{ width: "100%", height: "auto" }}
+                data-testid="affiliate-logo"
               />
             </div>
           );

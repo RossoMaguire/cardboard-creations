@@ -10,7 +10,14 @@ interface IBackgroundVideoProps {
 const BackgroundVideo = ({ source, children }: IBackgroundVideoProps) => {
   return (
     <div className={styles.video_background}>
-      <video autoPlay loop muted id="video-id" className="video">
+      <video
+        autoPlay
+        loop
+        muted
+        id="video-id"
+        className="video"
+        data-testid="background-vid"
+      >
         <source src={`${source}#t=5`} type="video/mp4" />
         Your browser does not support the video tag.
       </video>

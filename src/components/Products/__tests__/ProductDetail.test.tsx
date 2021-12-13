@@ -4,7 +4,7 @@ import ProductDetail from "../ProductDetail";
 import { mockProduct } from "../../common/mock_data";
 
 describe("Rendering the Product", () => {
-  it("Renders the product details correcty", async () => {
+  it("renders the product details correcty", async () => {
     render(<ProductDetail product={mockProduct} />);
 
     expect(screen.getByText("Home Bar - Cardboard Bar")).toBeInTheDocument();

@@ -80,3 +80,8 @@ declare interface Review {
   create_timestamp: number;
   update_timestamp: number;
 }
+
+type AffiliateLogo = {
+  src: string;
+  alt: string;
+};

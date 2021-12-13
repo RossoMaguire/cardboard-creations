@@ -19,7 +19,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/common/CartContext.tsx"
+    "src/components/common/CartContext.tsx",
+    "src/components/common/mock_data.js"
   ],
   "exclude": ["node_modules"]
 }

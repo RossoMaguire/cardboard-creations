@@ -45,10 +45,17 @@ function Item({ items, product, setTotalAmount }: IItemProps) {
       <div className={styles.itemDetails}>
         <h3>{product.name}</h3>
         <p style={{ fontWeight: "bold" }}>
-          Quantity: <span style={{ fontWeight: "normal" }}>{quantity}</span>
+          Quantity:{" "}
+          <span data-testid="quantity" style={{ fontWeight: "normal" }}>
+            {quantity}
+          </span>
         </p>
         <p style={{ fontWeight: "bold" }}>
-          Price: <span style={{ fontWeight: "normal" }}>{`€${price}`}</span>
+          Price:{" "}
+          <span
+            data-testid="price"
+            style={{ fontWeight: "normal" }}
+          >{`€${price}`}</span>
         </p>
       </div>
     </div>

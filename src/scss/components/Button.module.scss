@@ -2,6 +2,11 @@
   display: block;
 }
 
+.button-wrap-disabled {
+  display: block;
+  pointer-events: none;
+}
+
 .button-wrap :global(.button) {
   float: none;
 }

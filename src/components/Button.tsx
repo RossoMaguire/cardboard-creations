@@ -7,6 +7,7 @@ interface IButtonProps {
   buttonText: string;
   dataTestId?: string;
   handleClick?: React.MouseEventHandler<HTMLDivElement>;
+  disabled?: boolean;
 }
 
 function Button({
@@ -14,10 +15,13 @@ function Button({
   buttonText,
   dataTestId,
   handleClick,
+  disabled = false,
 }: IButtonProps) {
   return (
     <div
-      className={styles["button-wrap"]}
+      className={
+        disabled ? styles["button-wrap-disabled"] : styles["button-wrap"]
+      }
       data-testid={dataTestId}
       onClick={handleClick}
     >
@@ -26,7 +30,9 @@ function Button({
           <span className="button">{buttonText}</span>
         </Link>
       ) : (
-        <span className="button">{buttonText}</span>
+        <span className={disabled ? "disabled-button" : "button"}>
+          {buttonText}
+        </span>
       )}
     </div>
   );

@@ -38,6 +38,7 @@ function ProductDetail({ product, isBestSeller }: IBestSellerProps) {
             <Button
               buttonText="-"
               handleClick={() => removeFromCart(product.slug)}
+              disabled={itemCount === 0}
             />
             <span>{itemCount}</span>
             <Button

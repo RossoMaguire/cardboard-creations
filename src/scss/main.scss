@@ -54,7 +54,20 @@ body {
   color: #ffffff;
   cursor: pointer;
   display: inline-block;
-  float: left;
+  font-family: $font-family;
+  font-weight: $font-weight-bold;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  margin-right: 8px;
+}
+
+.content .disabled-button {
+  background-color: $color-light-gray;
+  border-radius: 4px;
+  color: #ffffff;
+  pointer-events: none;
+  display: inline-block;
   font-family: $font-family;
   font-weight: $font-weight-bold;
   padding: 12px 24px;

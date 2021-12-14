@@ -85,3 +85,8 @@ type AffiliateLogo = {
   src: string;
   alt: string;
 };
+
+type Image = {
+  img: string;
+  title: string;
+};

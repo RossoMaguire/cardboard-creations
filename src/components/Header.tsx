@@ -45,7 +45,11 @@ function Header({ description, notSticky }: Props): JSX.Element {
   });
 
   return (
-    <header id="header" className={`${notSticky ? "" : "sticky"}`}>
+    <header
+      data-testid="header"
+      id="header"
+      className={`${notSticky ? "" : "sticky"}`}
+    >
       <Announcement message="Worldwide delivery available" />
       <div className={styles.wrap}>
         <Link href="/" passHref>
@@ -55,6 +59,7 @@ function Header({ description, notSticky }: Props): JSX.Element {
               className="logo"
               src="/images/cardboard-creations-logo.webp"
               alt="CC Logo"
+              data-testid="logo"
             />
           </div>
         </Link>
@@ -62,25 +67,25 @@ function Header({ description, notSticky }: Props): JSX.Element {
         <div className={styles.menu}>
           <ul>
             {links?.map((link) => (
-              <li key={`${link.label}$-menu`}>
+              <li key={`${link.label}$-menu`} data-testid="menu-item">
                 <Link href={link.url ?? ""}>
                   <a href={link.url}>{link.label}</a>
                 </Link>
               </li>
             ))}
-            <li key="Shop$-menu">
+            <li key="Shop$-menu" data-testid="menu-item">
               <Link href="/shop">Shop</Link>
             </li>
-            <li key="FAQ$-menu">
+            <li key="FAQ$-menu" data-testid="menu-item">
               <Link href="/faqs">FAQs</Link>
             </li>
-            <li key="Videos$-menu">
+            <li key="Videos$-menu" data-testid="menu-item">
               <Link href="/assembly-videos">Assembly Videos</Link>
             </li>
-            <li key="Contact$-menu">
+            <li key="Contact$-menu" data-testid="menu-item">
               <Link href="/contact">Contact</Link>
             </li>
-            <li>
+            <li key="Cart$-menu" data-testid="menu-item">
               <Link href="/shop/cart" passHref>
                 <Badge
                   badgeContent={cartCount}

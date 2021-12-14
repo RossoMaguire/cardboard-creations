@@ -20,13 +20,17 @@ function PromoBanner({
   video,
 }: IPromoBannerProps) {
   return (
-    <div className={video ? "video_wrap" : "wrap"}>
+    <div data-testid="promo-banner" className={video ? "video_wrap" : "wrap"}>
       <div className={styles.promo_block}>
         <div className={styles.promo}>
           <span>{tagline}</span>
           <h3>{heading}</h3>
           <p>{description}</p>
-          <Button buttonText={buttonText} buttonURL={buttonUrl} />
+          <Button
+            data-testid="promo-button"
+            buttonText={buttonText}
+            buttonURL={buttonUrl}
+          />
         </div>
       </div>
     </div>

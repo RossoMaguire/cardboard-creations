@@ -81,12 +81,12 @@ declare interface Review {
   update_timestamp: number;
 }
 
-type AffiliateLogo = {
+declare type AffiliateLogo = {
   src: string;
   alt: string;
 };
 
-type Image = {
+declare type GridImage = {
   img: string;
   title: string;
 };

@@ -4,7 +4,7 @@ import NextImage from "next/image";
 import React from "react";
 
 interface IImageGridProps {
-  images: Image[];
+  images: GridImage[];
 }
 
 function ImageGrid({ images }: IImageGridProps) {

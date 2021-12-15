@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Footer, Header, Hero, ProductDetail } from "components";
 
 import { GetServerSidePropsContext } from "next";

@@ -1,0 +1,22 @@
+.staffMembers {
+  .staffMember {
+    column-gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 2em;
+
+    img {
+      height: 530px;
+      object-fit: cover;
+      object-position: top;
+      width: 100%;
+    }
+
+    .links {
+      img {
+        height: 90px;
+        width: auto;
+      }
+    }
+  }
+}

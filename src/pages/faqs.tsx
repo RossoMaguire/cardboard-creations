@@ -1,6 +1,7 @@
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { Footer, Header, Hero, ServiceGrid } from "components";
 
+/* eslint-disable react-hooks/exhaustive-deps */
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
@@ -9,11 +10,29 @@ import { client } from "client";
 /* eslint-disable @next/next/no-img-element */
 import { getNextStaticProps } from "@faustjs/next";
 import styles from "scss/pages/home.module.scss";
+import { useCartContext } from "components/common/CartContext";
 
 export default function Page({}) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
   const faqs = useQuery().fAQs()?.nodes;
+
+  const { setCartCount, setItems, setTotalAmount } = useCartContext();
+
+  React.useEffect(() => {
+    localStorage.getItem("CardboardCreationsCartCount") &&
+      setCartCount(
+        parseInt(localStorage.getItem("CardboardCreationsCartCount"))
+      );
+
+    localStorage.getItem("CardboardCreationsCartItems") &&
+      setItems(JSON.parse(localStorage.getItem("CardboardCreationsCartItems")));
+
+    localStorage.getItem("CardboardCreationsCartTotal") &&
+      setTotalAmount(
+        parseFloat(localStorage.getItem("CardboardCreationsCartTotal"))
+      );
+  }, []);
 
   return (
     <>

@@ -4,7 +4,9 @@ import Cookie from "js-cookie";
 
 const cartDefaultValues: CartContext = {
   cartCount: 0,
+  totalAmount: 0,
   productsInCart: [] as Product[],
+  setTotalAmount: () => {},
   setCartCount: () => {},
   setProductsInCart: () => {},
   items: [] as Item[],
@@ -13,7 +15,7 @@ const cartDefaultValues: CartContext = {
   removeFromCart: () => {},
 };
 
-const CartItemsContext = createContext<CartContext>(cartDefaultValues);
+export const CartItemsContext = createContext<CartContext>(cartDefaultValues);
 
 export function useCartContext() {
   return useContext(CartItemsContext);
@@ -21,25 +23,30 @@ export function useCartContext() {
 
 export function CartProvider({ children }: ICartContextProps) {
   const [cartCount, setCartCount] = useState<number>(0);
-
+  const [totalAmount, setTotalAmount] = useState<number>(0);
   const [items, setItems] = useState<Item[]>([] as Item[]);
   const [productsInCart, setProductsInCart] = useState([] as Product[]);
 
   useEffect(() => {
     Cookie.set("CardboardCreationsCartItems", JSON.stringify(items));
+    localStorage.setItem("CardboardCreationsCartItems", JSON.stringify(items));
   }, [items]);
 
   useEffect(() => {
     Cookie.set("CardboardCreationsCartCount", JSON.stringify(cartCount));
+    localStorage.setItem(
+      "CardboardCreationsCartCount",
+      JSON.stringify(cartCount)
+    );
   }, [cartCount]);
 
   useEffect(() => {
-    if (sessionStorage.getItem("CardboardCreationsCartItems")) {
-      setItems(
-        JSON.parse(sessionStorage.getItem("CardboardCreationsCartItems"))
-      );
-    }
-  }, []);
+    Cookie.set("CardboardCreationsCartTotal", JSON.stringify(totalAmount));
+    localStorage.setItem(
+      "CardboardCreationsCartTotal",
+      JSON.stringify(totalAmount)
+    );
+  }, [totalAmount]);
 
   const addToCart = async (name: string, price: string) => {
     setCartCount(cartCount + 1);
@@ -56,9 +63,12 @@ export function CartProvider({ children }: ICartContextProps) {
 
       return [...prevState, { name, count: 1, price: parseFloat(price) }];
     });
+    setTotalAmount((prevState) => {
+      return prevState + parseFloat(price);
+    });
   };
 
-  const removeFromCart = async (name: string) => {
+  const removeFromCart = async (name: string, price: string) => {
     cartCount > 0 ? setCartCount(cartCount - 1) : setCartCount(0);
     setItems((prevState) => {
       return prevState.reduce((ack, item) => {
@@ -73,6 +83,9 @@ export function CartProvider({ children }: ICartContextProps) {
         }
       }, [] as Item[]);
     });
+    setTotalAmount((prevState) => {
+      return prevState - parseFloat(price);
+    });
   };
 
   const value = {
@@ -81,6 +94,8 @@ export function CartProvider({ children }: ICartContextProps) {
     productsInCart,
     setCartCount,
     setItems,
+    totalAmount,
+    setTotalAmount,
     setProductsInCart,
     addToCart,
     removeFromCart,

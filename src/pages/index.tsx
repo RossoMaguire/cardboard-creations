@@ -31,7 +31,7 @@ export default function Page({
   reviews = null,
   cartCookies = null,
 }) {
-  const { setCartCount, setItems } = useCartContext();
+  const { setCartCount, setItems, setTotalAmount } = useCartContext();
   const { useQuery } = client;
 
   React.useEffect(() => {
@@ -40,6 +40,9 @@ export default function Page({
 
     cartCookies.CardboardCreationsCartItems !== "null" &&
       setItems(JSON.parse(cartCookies.CardboardCreationsCartItems));
+
+    cartCookies.CardboardCreationsCartTotal !== "null" &&
+      setTotalAmount(parseFloat(cartCookies.CardboardCreationsCartTotal));
   }, []);
 
   const generalSettings = useQuery().generalSettings;
@@ -176,6 +179,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
           cookies.CardboardCreationsCartCount || String(null),
         CardboardCreationsCartItems:
           cookies.CardboardCreationsCartItems || String(null),
+        CardboardCreationsCartTotal:
+          cookies.CardboardCreationsCartTotal || String(null),
       },
     },
   });

@@ -1,6 +1,8 @@
 declare type CartContext = {
   cartCount: number;
   items: Item[];
+  totalAmount: number;
+  setTotalAmount: Function;
   setProductsInCart: Function;
   setCartCount: Function;
   setItems: Function;
@@ -22,4 +24,5 @@ declare interface ICartContextProps {
 declare type CartCookies = {
   CardboardCreationsCartCount: string;
   CardboardCreationsCartItems: string;
+  CardboardCreationsCartTotal: string;
 };

@@ -1,23 +1,33 @@
-/* eslint-disable @next/next/no-img-element */
-import React from "react";
-import { getNextServerSideProps } from "@faustjs/next";
-import { client } from "client";
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Footer, Header } from "components";
+
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
+import Item from "components/Cart/Item";
+import Link from "next/link";
+/* eslint-disable @next/next/no-img-element */
+import React from "react";
+import axios from "axios";
+import { client } from "client";
+import { getNextServerSideProps } from "@faustjs/next";
+import parseCookies from "utils/parseCookies";
 import styles from "scss/pages/cart.module.scss";
 import { useCartContext } from "components/common/CartContext";
-import axios from "axios";
-import Link from "next/link";
-import Item from "components/Cart/Item";
 
-export default function Page({ products }) {
+export default function Page({ cartCookies = null, products = null }) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
 
-  const { productsInCart, setProductsInCart, items } = useCartContext();
+  const {
+    productsInCart,
+    setProductsInCart,
+    items,
+    totalAmount,
+    setCartCount,
+    setItems,
+    setTotalAmount,
+  } = useCartContext();
   const [itemNames, setItemNames] = React.useState<string[]>([]);
-  const [totalAmount, setTotalAmount] = React.useState<number>(0);
 
   React.useEffect(() => {
     const slugs = items.map((item) => item.name);
@@ -31,6 +41,17 @@ export default function Page({ products }) {
 
     setProductsInCart(inventory);
   }, [itemNames, products.products, setProductsInCart]);
+
+  React.useEffect(() => {
+    cartCookies.CardboardCreationsCartCount !== "null" &&
+      setCartCount(parseInt(cartCookies.CardboardCreationsCartCount));
+
+    cartCookies.CardboardCreationsCartItems !== "null" &&
+      setItems(JSON.parse(cartCookies.CardboardCreationsCartItems));
+
+    cartCookies.CardboardCreationsCartTotal !== "null" &&
+      setTotalAmount(parseFloat(cartCookies.CardboardCreationsCartTotal));
+  }, []);
 
   return (
     <>
@@ -47,12 +68,7 @@ export default function Page({ products }) {
               <div className={styles.cartItems}>
                 {productsInCart.map((product) => {
                   return (
-                    <Item
-                      items={items}
-                      product={product}
-                      key={product.id}
-                      setTotalAmount={setTotalAmount}
-                    />
+                    <Item items={items} product={product} key={product.id} />
                   );
                 })}
               </div>
@@ -85,11 +101,21 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     process.env.BASE_URL + "/api/woocommerce/products"
   );
 
+  const cookies = parseCookies(context.req);
+
   return getNextServerSideProps(context, {
     Page,
     client,
     props: {
       products,
+      cartCookies: {
+        CardboardCreationsCartCount:
+          cookies.CardboardCreationsCartCount || String(null),
+        CardboardCreationsCartItems:
+          cookies.CardboardCreationsCartItems || String(null),
+        CardboardCreationsCartTotal:
+          cookies.CardboardCreationsCartTotal || String(null),
+      },
     },
   });
 }

@@ -1,16 +1,36 @@
 import { Footer, Header, Hero } from "components";
 
+/* eslint-disable react-hooks/exhaustive-deps */
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
+import React from "react";
 import { client } from "client";
 /* eslint-disable @next/next/no-img-element */
 import { getNextStaticProps } from "@faustjs/next";
 import styles from "scss/pages/customer-photos.module.scss";
+import { useCartContext } from "components/common/CartContext";
 
 export default function Page() {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
   const photos = useQuery().mediaItems().nodes;
+
+  const { setCartCount, setItems, setTotalAmount } = useCartContext();
+
+  React.useEffect(() => {
+    localStorage.getItem("CardboardCreationsCartCount") &&
+      setCartCount(
+        parseInt(localStorage.getItem("CardboardCreationsCartCount"))
+      );
+
+    localStorage.getItem("CardboardCreationsCartItems") &&
+      setItems(JSON.parse(localStorage.getItem("CardboardCreationsCartItems")));
+
+    localStorage.getItem("CardboardCreationsCartTotal") &&
+      setTotalAmount(
+        parseFloat(localStorage.getItem("CardboardCreationsCartTotal"))
+      );
+  }, []);
 
   return (
     <>

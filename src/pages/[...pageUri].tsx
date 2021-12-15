@@ -13,8 +13,8 @@ import { useCartContext } from "components/common/CartContext";
 
 export interface PageProps {
   page: PageType | PageType["preview"]["node"] | null | undefined;
-  cartCookies: CartCookies;
-  pageUri;
+  cartCookies?: CartCookies;
+  pageUri?;
 }
 
 export function PageComponent({

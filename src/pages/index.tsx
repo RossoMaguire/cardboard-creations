@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Affiliates,
   BackgroundVideo,
@@ -21,17 +22,27 @@ import axios from "axios";
 import { client } from "client";
 import { getNextServerSideProps } from "@faustjs/next";
 import homeGridImages from "../repositories/image-grid";
+import parseCookies from "../utils/parseCookies";
 import styles from "scss/pages/home.module.scss";
+import { useCartContext } from "components/common/CartContext";
 
-export default function Page({ products = null, reviews = null }) {
-  const { usePosts, useQuery } = client;
+export default function Page({
+  products = null,
+  reviews = null,
+  cartCookies = null,
+}) {
+  const { setCartCount, setItems } = useCartContext();
+  const { useQuery } = client;
+
+  React.useEffect(() => {
+    cartCookies.CardboardCreationsCartCount !== "null" &&
+      setCartCount(parseInt(cartCookies.CardboardCreationsCartCount));
+
+    cartCookies.CardboardCreationsCartItems !== "null" &&
+      setItems(JSON.parse(cartCookies.CardboardCreationsCartItems));
+  }, []);
+
   const generalSettings = useQuery().generalSettings;
-  const posts = usePosts({
-    first: 6,
-    where: {
-      categoryName: "uncategorized",
-    },
-  });
 
   const getBestSeller = ({ products }) => {
     const featured: Product = products.filter((product) => {
@@ -134,14 +145,7 @@ export default function Page({ products = null, reviews = null }) {
         <section className={styles.explore}>
           <ServiceGrid />
         </section>
-        {/* <Posts
-          posts={posts.nodes}
-          heading="Latest Posts"
-          intro="The Posts component in src/pages/index.tsx shows the latest six posts from the connected WordPress site."
-          headingLevel="h2"
-          postTitleLevel="h3"
-          id={styles.post_list}
-        /> */}
+
         <CTA title="Questions or comments?" headingLevel="h2">
           <p>Follow us on Social Media</p>
         </CTA>
@@ -151,18 +155,6 @@ export default function Page({ products = null, reviews = null }) {
   );
 }
 
-// export async function getStaticProps(context: GetStaticPropsContext) {
-//   const { data: products } = await axios.get(
-//     process.env.BASE_URL + "/api/woocommerce/products"
-//   );
-//   return getNextStaticProps(context, {
-//     Page,
-//     client,
-//     props: {
-//       products,
-//     },
-//   });
-// }
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { data: products } = await axios.get(
     process.env.BASE_URL + "/api/woocommerce/products"
@@ -170,12 +162,21 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { data: reviews } = await axios.get(
     process.env.BASE_URL + "/api/etsy/reviews"
   );
+
+  const cookies = parseCookies(context.req);
+
   return getNextServerSideProps(context, {
     Page,
     client,
     props: {
       products,
       reviews,
+      cartCookies: {
+        CardboardCreationsCartCount:
+          cookies.CardboardCreationsCartCount || String(null),
+        CardboardCreationsCartItems:
+          cookies.CardboardCreationsCartItems || String(null),
+      },
     },
   });
 }

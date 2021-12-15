@@ -1,10 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
+import Cookie from "js-cookie";
+
 const cartDefaultValues: CartContext = {
   cartCount: 0,
   productsInCart: [] as Product[],
+  setCartCount: () => {},
   setProductsInCart: () => {},
   items: [] as Item[],
+  setItems: () => {},
   addToCart: () => {},
   removeFromCart: () => {},
 };
@@ -17,12 +21,25 @@ export function useCartContext() {
 
 export function CartProvider({ children }: ICartContextProps) {
   const [cartCount, setCartCount] = useState<number>(0);
+
   const [items, setItems] = useState<Item[]>([] as Item[]);
   const [productsInCart, setProductsInCart] = useState([] as Product[]);
 
   useEffect(() => {
-    localStorage.setItem("CardboardCreationsCartItems", JSON.stringify(items));
+    Cookie.set("CardboardCreationsCartItems", JSON.stringify(items));
   }, [items]);
+
+  useEffect(() => {
+    Cookie.set("CardboardCreationsCartCount", JSON.stringify(cartCount));
+  }, [cartCount]);
+
+  useEffect(() => {
+    if (sessionStorage.getItem("CardboardCreationsCartItems")) {
+      setItems(
+        JSON.parse(sessionStorage.getItem("CardboardCreationsCartItems"))
+      );
+    }
+  }, []);
 
   const addToCart = async (name: string, price: string) => {
     setCartCount(cartCount + 1);
@@ -39,7 +56,6 @@ export function CartProvider({ children }: ICartContextProps) {
 
       return [...prevState, { name, count: 1, price: parseFloat(price) }];
     });
-    localStorage.setItem("CardboardCreationsCartItems", JSON.stringify(items));
   };
 
   const removeFromCart = async (name: string) => {
@@ -63,6 +79,8 @@ export function CartProvider({ children }: ICartContextProps) {
     cartCount,
     items,
     productsInCart,
+    setCartCount,
+    setItems,
     setProductsInCart,
     addToCart,
     removeFromCart,

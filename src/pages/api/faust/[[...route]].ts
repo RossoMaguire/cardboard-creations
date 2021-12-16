@@ -1,4 +1,4 @@
-import "../../faust.config";
+import "../../../../faust.config";
 
 import { apiRouter } from "@faustjs/core/api";
 

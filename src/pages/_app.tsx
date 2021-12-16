@@ -1,4 +1,4 @@
-import "faust.config";
+import "../../faust.config";
 import "normalize.css/normalize.css";
 import "../utils/sticky-header/sticky-header.css";
 import "scss/main.scss";

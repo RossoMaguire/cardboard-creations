@@ -1,4 +1,4 @@
-import { MenuLocationEnum, client } from "client";
+import { MenuLocationEnum, client } from "../client";
 
 import Announcement from "./Announcement";
 import { Badge } from "@mui/material";

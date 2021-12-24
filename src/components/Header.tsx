@@ -8,6 +8,7 @@ import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import styles from "scss/components/Header.module.scss";
 import { useCartContext } from "./common/CartContext";
+import MobileMenu from "./MobileMenu";
 
 interface Props {
   description?: string;
@@ -98,6 +99,7 @@ function Header({ description, notSticky }: Props): JSX.Element {
             </li>
           </ul>
         </div>
+        <MobileMenu />
       </div>
     </header>
   );

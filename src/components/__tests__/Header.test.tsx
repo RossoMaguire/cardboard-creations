@@ -3,7 +3,6 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { FaustProvider } from "@faustjs/next";
 import Header from "../Header";
 import { client } from "../../client";
-import { mockMenuItems } from "components/common/mock_data";
 
 describe("Rendering the Header", () => {
   it("renders the logo and sticky header correctly", async () => {
@@ -30,18 +29,4 @@ describe("Rendering the Header", () => {
       expect(screen.queryByTestId("header")).not.toHaveClass("sticky");
     });
   });
-
-  // it("renders the menu items correctly", async () => {
-  //   render(
-  //     <FaustProvider client={client} pageProps={{} as any}>
-  //       <Header />
-  //     </FaustProvider>
-  //   );
-
-  //   (client.useQuery().menuItems as unknown) = jest
-  //     .fn()
-  //     .mockResolvedValue(mockMenuItems);
-
-  //   expect(screen.getByTestId("menu-item")).toHaveLength(8);
-  // });
 });

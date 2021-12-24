@@ -1,0 +1,54 @@
+@import "scss/variables";
+
+.mobileMenu {
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    cursor: pointer;
+  }
+
+  .linksContainer {
+    background-color: $main-green;
+    top: 0;
+    position: absolute;
+    width: 100%;
+    left: 0;
+
+    .menuLinks {
+      list-style-type: none;
+      padding-left: 0px;
+      margin-top: 30px;
+
+      li {
+        margin-bottom: 10px;
+        border-bottom: 1px solid white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        cursor: pointer;
+
+        a {
+          color: white;
+          text-decoration: none;
+        }
+
+        span {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-medium) {
+  .mobileMenu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $breakpoint-small) {
+  .menu {
+    display: block;
+  }
+}

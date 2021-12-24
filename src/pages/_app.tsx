@@ -1,6 +1,7 @@
 import "../../faust.config";
 import "normalize.css/normalize.css";
 import "../utils/sticky-header/sticky-header.css";
+import "../utils/mobile-menu.css";
 import "scss/main.scss";
 
 import type { AppProps } from "next/app";

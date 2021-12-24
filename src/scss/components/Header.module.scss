@@ -97,3 +97,9 @@
   background-color: lighten($main-green, 10);
   color: $color-white;
 }
+
+@media screen and (max-width: $breakpoint-small) {
+  .menu {
+    display: none;
+  }
+}

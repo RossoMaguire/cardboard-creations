@@ -16,6 +16,25 @@
   margin-top: 200px;
 }
 
+.affiliates {
+  .affiliate {
+    display: block;
+    position: relative;
+    text-align: center;
+
+    img {
+      width: 50%;
+      height: auto;
+    }
+  }
+}
+
+.images {
+  ul {
+    width: 100%;
+  }
+}
+
 @media screen and (min-width: $breakpoint-medium) {
   #home_hero h1 {
     max-width: 40%; // Reduced from 80% on the front-page only to wrap the headline.
@@ -40,6 +59,17 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+
+    .affiliate {
+      display: block;
+      position: relative;
+      height: 150px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
   }
 
   .features {

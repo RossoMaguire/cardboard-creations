@@ -2,6 +2,12 @@
 
 @import "scss/variables";
 
+.customerPhoto {
+  img {
+    width: 100%;
+  }
+}
+
 @media screen and (min-width: $breakpoint-medium) {
   .customerPhotos {
     column-gap: 20px;

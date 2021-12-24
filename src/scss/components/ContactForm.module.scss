@@ -1,3 +1,5 @@
+@import "scss/variables";
+
 .contact_form {
   .doubleFields {
     display: flex;
@@ -23,5 +25,21 @@
     border-color: grey;
     padding: 10px 0px 10px 0px;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: $breakpoint-medium) {
+  .contact_form {
+    .doubleFields {
+      display: block;
+    }
+
+    .singleField {
+      display: block;
+    }
+
+    .field {
+      width: auto;
+    }
   }
 }

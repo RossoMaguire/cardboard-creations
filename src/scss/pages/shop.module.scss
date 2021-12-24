@@ -2,6 +2,18 @@
 
 @import "scss/variables";
 
+.products {
+  .product {
+    margin-bottom: 4em;
+
+    .productImage {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
 @media screen and (min-width: $breakpoint-medium) {
   .products {
     column-gap: 20px;

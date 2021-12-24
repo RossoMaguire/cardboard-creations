@@ -1,13 +1,13 @@
 import Button from "./Button";
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import styles from "scss/pages/home.module.scss";
+import styles from "scss/components/ServiceGrid.module.scss";
 
 function ServiceGrid() {
   return (
     <div className="wrap">
-      <div className={styles.features}>
-        <div className={styles.feature}>
+      <div className={styles.services}>
+        <div className={styles.service}>
           <img
             src="/images/service-grid/eco-friendly.webp"
             alt="Eco Friendly"
@@ -19,7 +19,7 @@ function ServiceGrid() {
           </p>
           <Button buttonText="Learn more" buttonURL="/posts/eco-friendly" />
         </div>
-        <div className={styles.feature}>
+        <div className={styles.service}>
           <img
             src="/images/service-grid/customer-photos.jpg"
             alt="Customer Photos"
@@ -31,7 +31,7 @@ function ServiceGrid() {
           </p>
           <Button buttonText="See more" buttonURL="/customer-photos" />
         </div>
-        <div className={styles.feature}>
+        <div className={styles.service}>
           <img
             src="/images/service-grid/faqs-image.webp"
             alt="Have Questions?"

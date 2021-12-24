@@ -8,19 +8,11 @@ function Affiliates() {
       <div className={styles.affiliates}>
         {logos.map((logo, index) => {
           return (
-            <div
-              key={`logo-${index}`}
-              style={{
-                display: "block",
-                position: "relative",
-                height: "150px",
-              }}
-            >
+            <div key={`logo-${index}`} className={styles.affiliate}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={`/images/affiliates/${logo.src}`}
                 alt={logo.alt}
-                style={{ width: "100%", height: "auto" }}
                 data-testid="affiliate-logo"
               />
             </div>

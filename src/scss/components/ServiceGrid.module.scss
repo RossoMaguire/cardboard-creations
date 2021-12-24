@@ -1,0 +1,27 @@
+@import "scss/variables";
+
+@media screen and (min-width: $breakpoint-medium) {
+  .services {
+    column-gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .service {
+      img {
+        width: 100%;
+        max-height: 290px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-medium) {
+  .services {
+    .service {
+      margin-bottom: 4em;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -9,11 +9,13 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Hero from "./Hero";
 import ImageGrid from "./ImageGrid";
+import MobileMenu from "./MobileMenu";
 import Pagination from "./Pagination";
 import Posts from "./Posts";
 import ProductDetail from "./Products/ProductDetail";
 import PromoBanner from "./PromoBanner";
 import ServiceGrid from "./ServiceGrid";
+import StaffMembers from "./StaffMembers";
 
 export {
   CTA,
@@ -32,4 +34,6 @@ export {
   Announcement,
   ProductDetail,
   ServiceGrid,
+  StaffMembers,
+  MobileMenu,
 };

@@ -1,4 +1,11 @@
-import { Footer, Header, Hero, ServiceGrid } from "components";
+import {
+  ContactForm,
+  Footer,
+  Header,
+  Hero,
+  ServiceGrid,
+  StaffMembers,
+} from "components";
 import { Page as PageType, client } from "client";
 import { getNextServerSideProps, is404 } from "@faustjs/next";
 
@@ -6,9 +13,7 @@ import { getNextServerSideProps, is404 } from "@faustjs/next";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import React from "react";
-import StaffMembers from "components/StaffMembers";
 import parseCookies from "utils/parseCookies";
-import styles from "scss/pages/home.module.scss";
 import { useCartContext } from "components/common/CartContext";
 
 export interface PageProps {
@@ -78,6 +83,9 @@ export function PageComponent({
                 recycled in a normal domestic bin.
               </p>
             </>
+          )}
+          {pageUri[0] === "contact" && (
+            <ContactForm description="Still haven't found what you are looking for? Get in touch and let us know! " />
           )}
         </div>
         <ServiceGrid />

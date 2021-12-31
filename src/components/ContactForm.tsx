@@ -4,8 +4,8 @@ import Button from "./Button";
 import styles from "scss/components/ContactForm.module.scss";
 
 interface IContactFormProps {
-  heading: string;
-  description: string;
+  heading?: string;
+  description?: string;
 }
 
 function ContactForm({ heading, description }: IContactFormProps) {

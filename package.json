@@ -46,6 +46,7 @@
     "@testing-library/react": "^12.1.2",
     "@types/lodash": "^4.14.176",
     "@types/react": "^17.0.24",
+    "cz-conventional-changelog": "^3.3.0",
     "dotenv-flow": "3.2.0",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.1.2",
@@ -84,5 +85,10 @@
       "tsx"
     ],
     "testEnvironment": "jsdom"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

@@ -89,6 +89,9 @@ export default function Page({
           <ProductDetail product={getBestSeller(products)} isBestSeller />
         </section>
         <section className={styles.explore}>
+          <h3 style={{ textAlign: "center" }}>
+            Our customers love our products!
+          </h3>
           <EtsyReviews topRated={getTopReviews(reviews)} />
         </section>
         <section

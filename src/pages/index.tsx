@@ -115,7 +115,7 @@ export default function Page({
               <ImageGrid images={homeGridImages} />
               <div className={styles.promo}>
                 <span>What makes us different</span>
-                <h3>ECO FRIENDLY & REUSABLE</h3>
+                <h3>Eco Friendly & Reusable</h3>
                 <p>
                   Our candy carts, home bars, ferris wheels and plinths are
                   reusable and made from fully recyclable materials

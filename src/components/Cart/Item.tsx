@@ -27,7 +27,9 @@ function Item({ items, product }: IItemProps) {
 
   return (
     <div className={styles.cartItem}>
-      <img src={product.images[0].src} alt={product.name} />
+      <a href={`/shop/${product.slug}`}>
+        <img src={product.images[0].src} alt={product.name} />
+      </a>
       <div className={styles.itemDetails}>
         <h3>{product.name}</h3>
         <p style={{ fontWeight: "bold" }}>

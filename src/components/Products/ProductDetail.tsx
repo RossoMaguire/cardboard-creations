@@ -2,6 +2,7 @@ import CartButtons from "./CartButtons";
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import styles from "scss/components/ProductDetail.module.scss";
+import Button from "components/Button";
 
 interface IBestSellerProps {
   product: Product;
@@ -37,6 +38,9 @@ function ProductDetail({ product, isBestSeller }: IBestSellerProps) {
           <p style={{ fontWeight: "bold" }}>Quantity</p>
           <CartButtons product={product} />
           <div dangerouslySetInnerHTML={{ __html: product.description }} />
+          {!isBestSeller && (
+            <Button buttonURL="/shop/cart" buttonText="Go to Cart" />
+          )}
         </div>
       </div>
     </div>

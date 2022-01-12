@@ -79,6 +79,7 @@ body {
 .content .button:focus,
 .content .button:hover {
   background-color: lighten($main-green, 10);
+  transition-duration: 0.4s;
 }
 
 .content .button-secondary {

@@ -9,15 +9,26 @@ interface IBestSellerProps {
 }
 
 function ProductDetail({ product, isBestSeller }: IBestSellerProps) {
+  const [shrink, setShrink] = React.useState("");
+
+  React.useEffect(() => {
+    setShrink(styles.shrink);
+  }, []);
+
   return (
     <div className="wrap">
       <div className={styles.productDetail}>
-        <div className={styles.productImage}>
-          <img
-            src={product.images[0].src}
-            alt={product.name}
-            style={{ width: "100%" }}
-          />
+        <div
+          id={product.id.toString()}
+          className={`${styles.productImage} ${shrink}`}
+        >
+          <a href={product.images[0].src} target="_blank" rel="noreferrer">
+            <img
+              src={product.images[0].src}
+              alt={product.name}
+              style={{ width: "100%" }}
+            />
+          </a>
         </div>
         <div className={styles.productDetails}>
           {isBestSeller && <h2>Our Best Seller</h2>}

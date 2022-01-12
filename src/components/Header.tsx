@@ -68,25 +68,49 @@ function Header({ description, notSticky }: Props): JSX.Element {
         <div className={styles.menu}>
           <ul>
             {links?.map((link) => (
-              <li key={`${link.label}$-menu`} data-testid="menu-item">
+              <li
+                key={`${link.label}$-menu`}
+                data-testid="menu-item"
+                className={styles.hvr_underline_from_center}
+              >
                 <Link href={link.url ?? ""}>
                   <a href={link.url}>{link.label}</a>
                 </Link>
               </li>
             ))}
-            <li key="Shop$-menu" data-testid="menu-item">
+            <li
+              key="Shop$-menu"
+              data-testid="menu-item"
+              className={styles.hvr_underline_from_center}
+            >
               <Link href="/shop">Shop</Link>
             </li>
-            <li key="FAQ$-menu" data-testid="menu-item">
+            <li
+              key="FAQ$-menu"
+              data-testid="menu-item"
+              className={styles.hvr_underline_from_center}
+            >
               <Link href="/faqs">FAQs</Link>
             </li>
-            <li key="Videos$-menu" data-testid="menu-item">
+            <li
+              key="Videos$-menu"
+              data-testid="menu-item"
+              className={styles.hvr_underline_from_center}
+            >
               <Link href="/assembly-videos">Assembly Videos</Link>
             </li>
-            <li key="Contact$-menu" data-testid="menu-item">
+            <li
+              key="Contact$-menu"
+              data-testid="menu-item"
+              className={styles.hvr_underline_from_center}
+            >
               <Link href="/contact">Contact</Link>
             </li>
-            <li key="Cart$-menu" data-testid="menu-item">
+            <li
+              key="Cart$-menu"
+              data-testid="menu-item"
+              className={styles.hvr_underline_from_center}
+            >
               <Link href="/shop/cart" passHref>
                 <Badge
                   badgeContent={cartCount}

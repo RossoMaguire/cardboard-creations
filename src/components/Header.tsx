@@ -64,7 +64,6 @@ function Header({ description, notSticky }: Props): JSX.Element {
             />
           </div>
         </Link>
-        {description && <p className={styles.description}>{description}</p>}
         <div className={styles.menu}>
           <ul>
             {links?.map((link) => (

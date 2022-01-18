@@ -13,6 +13,7 @@ function ContactForm({ heading, description }: IContactFormProps) {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("none");
+  const [success, setSuccess] = useState("none");
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -32,9 +33,22 @@ function ContactForm({ heading, description }: IContactFormProps) {
     // validate form
     if (name === "" || email === "" || message === "") {
       setError("block");
-    } else {
-      // send the message
+      setSuccess("none");
+      return;
     }
+
+    if (!email.includes("@")) {
+      setError("block");
+      setSuccess("none");
+      return;
+    }
+
+    // send the message
+    setError("none");
+    setName("");
+    setEmail("");
+    setMessage("");
+    setSuccess("block");
   };
 
   return (
@@ -49,8 +63,10 @@ function ContactForm({ heading, description }: IContactFormProps) {
               <input
                 type="text"
                 name="name"
+                value={name}
                 onChange={handleNameChange}
                 data-testid="contactField"
+                aria-label="name"
                 required
               />
             </div>
@@ -59,8 +75,10 @@ function ContactForm({ heading, description }: IContactFormProps) {
               <input
                 type="email"
                 name="email"
+                value={email}
                 onChange={handleEmailChange}
                 data-testid="contactField"
+                aria-label="email"
                 required
               />
             </div>
@@ -70,17 +88,31 @@ function ContactForm({ heading, description }: IContactFormProps) {
               <label htmlFor="message">Message</label>
               <textarea
                 name="message"
+                value={message}
                 onChange={handleMessageChange}
                 data-testid="contactField"
+                aria-label="message"
                 required
               />
             </div>
           </div>
-          <Button dataTestId="contactField" buttonText="Send" />
+          <Button
+            dataTestId="contactSubmit"
+            buttonText="Send"
+            handleClick={handleSubmit}
+          />
         </div>
 
-        <div id="create-error-msg" style={{ display: error }}>
-          Please fill out all the information.
+        <div id="create-error-msg" style={{ display: error, color: "red" }}>
+          {!email.includes("@")
+            ? `Please enter a valid email.`
+            : `Please fill out all the information.`}
+        </div>
+        <div
+          id="successfully-sent-msg"
+          style={{ display: success, color: "green" }}
+        >
+          Message sent successfully. Thank you!
         </div>
       </form>
     </div>

@@ -1,5 +1,5 @@
 import { Footer, Header, Pagination, Posts } from "components";
-import { OrderEnum, PostObjectsConnectionOrderbyEnum, client } from "client";
+import { client } from "client";
 
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";

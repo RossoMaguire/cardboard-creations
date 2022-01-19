@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Footer, Header } from "components";
+import { FadeTransition, Footer, Header, useCartContext } from "components";
 
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
@@ -12,7 +12,6 @@ import { client } from "client";
 import { getNextServerSideProps } from "@faustjs/next";
 import parseCookies from "utils/parseCookies";
 import styles from "scss/pages/cart.module.scss";
-import { useCartContext } from "components/common/CartContext";
 
 export default function Page({ cartCookies = null, products = null }) {
   const { useQuery } = client;
@@ -62,33 +61,35 @@ export default function Page({ cartCookies = null, products = null }) {
       </Head>
 
       <main className="content content-single">
-        <div className="wrap">
-          {items.length > 0 ? (
-            <>
-              <div className={styles.cartItems}>
-                {productsInCart.map((product) => {
-                  return (
-                    <Item items={items} product={product} key={product.id} />
-                  );
-                })}
-              </div>
-              <div className={styles.total}>
+        <FadeTransition>
+          <div className="wrap">
+            {items.length > 0 ? (
+              <>
+                <div className={styles.cartItems}>
+                  {productsInCart.map((product) => {
+                    return (
+                      <Item items={items} product={product} key={product.id} />
+                    );
+                  })}
+                </div>
+                <div className={styles.total}>
+                  <p>
+                    <span style={{ fontWeight: "bold" }}>
+                      Total: €{totalAmount}
+                    </span>
+                  </p>
+                </div>
+              </>
+            ) : (
+              <>
+                <h2>No Products in Cart</h2>
                 <p>
-                  <span style={{ fontWeight: "bold" }}>
-                    Total: €{totalAmount}
-                  </span>
+                  Visit the <Link href="/shop">Shop</Link> to get started
                 </p>
-              </div>
-            </>
-          ) : (
-            <>
-              <h2>No Products in Cart</h2>
-              <p>
-                Visit the <Link href="/shop">Shop</Link> to get started
-              </p>
-            </>
-          )}
-        </div>
+              </>
+            )}
+          </div>
+        </FadeTransition>
       </main>
 
       <Footer copyrightHolder={generalSettings.title} />

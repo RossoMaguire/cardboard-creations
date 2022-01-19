@@ -13,6 +13,8 @@ import {
   ProductDetail,
   PromoBanner,
   ServiceGrid,
+  useCartContext,
+  FadeTransition,
 } from "components";
 
 import { GetServerSidePropsContext } from "next";
@@ -21,10 +23,9 @@ import React from "react";
 import axios from "axios";
 import { client } from "client";
 import { getNextServerSideProps } from "@faustjs/next";
-import homeGridImages from "../repositories/image-grid";
+import homeGridImages from "../utils/data/image-grid";
 import parseCookies from "../utils/parseCookies";
 import styles from "scss/pages/home.module.scss";
-import { useCartContext } from "components/common/CartContext";
 
 export default function Page({
   products = null,
@@ -72,7 +73,7 @@ export default function Page({
   };
 
   return (
-    <>
+    <FadeTransition>
       <Header description={generalSettings.description} />
       <Head>
         <title>
@@ -157,7 +158,7 @@ export default function Page({
         </CTA>
       </main>
       <Footer copyrightHolder={generalSettings.title} />
-    </>
+    </FadeTransition>
   );
 }
 

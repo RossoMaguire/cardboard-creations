@@ -1,5 +1,12 @@
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
-import { Footer, Header, Hero, ServiceGrid } from "components";
+import {
+  Footer,
+  Header,
+  Hero,
+  ServiceGrid,
+  useCartContext,
+  FadeTransition,
+} from "components";
 
 /* eslint-disable react-hooks/exhaustive-deps */
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -10,7 +17,6 @@ import { client } from "client";
 /* eslint-disable @next/next/no-img-element */
 import { getNextStaticProps } from "@faustjs/next";
 import styles from "scss/pages/home.module.scss";
-import { useCartContext } from "components/common/CartContext";
 
 export default function Page({}) {
   const { useQuery } = client;
@@ -45,31 +51,33 @@ export default function Page({}) {
       <Hero title="FAQs" bgImage="/images/headless_hero_background.jpg" />
 
       <main className="content content-single">
-        <div className="wrap">
-          <h3>FAQs</h3>
-          {faqs.map((faq, index) => {
-            return (
-              <Accordion key="index">
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
-                  {faq.question}
-                </AccordionSummary>
-                <AccordionDetails>
-                  <div
-                    className="answer"
-                    dangerouslySetInnerHTML={{ __html: faq.answer }}
-                  ></div>
-                </AccordionDetails>
-              </Accordion>
-            );
-          })}
-        </div>
-        <section className={styles.explore}>
-          <ServiceGrid />
-        </section>
+        <FadeTransition>
+          <div className="wrap">
+            <h3>FAQs</h3>
+            {faqs.map((faq, index) => {
+              return (
+                <Accordion key="index">
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    {faq.question}
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <div
+                      className="answer"
+                      dangerouslySetInnerHTML={{ __html: faq.answer }}
+                    ></div>
+                  </AccordionDetails>
+                </Accordion>
+              );
+            })}
+          </div>
+          <section className={styles.explore}>
+            <ServiceGrid />
+          </section>
+        </FadeTransition>
       </main>
 
       <Footer copyrightHolder={generalSettings.title} />

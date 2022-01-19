@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 
 import ImageGrid from "../ImageGrid";
-import homeGridImages from "../../repositories/image-grid";
+import homeGridImages from "../../utils/data/image-grid";
 
 describe("Rendering the ImageGrid", () => {
   it("renders thecorrect number of images", async () => {

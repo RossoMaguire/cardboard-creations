@@ -1,6 +1,6 @@
 import { getNextStaticProps, is404 } from "@faustjs/next";
 import { client, Post } from "client";
-import { Footer, Header, Hero } from "components";
+import { FadeTransition, Footer, Header, Hero } from "components";
 import { GetStaticPropsContext } from "next";
 import Head from "next/head";
 
@@ -28,9 +28,11 @@ export function PostComponent({ post }: PostProps) {
       />
 
       <main className="content content-single">
-        <div className="wrap">
-          <div dangerouslySetInnerHTML={{ __html: post?.content() ?? "" }} />
-        </div>
+        <FadeTransition>
+          <div className="wrap">
+            <div dangerouslySetInnerHTML={{ __html: post?.content() ?? "" }} />
+          </div>
+        </FadeTransition>
       </main>
 
       <Footer copyrightHolder={generalSettings.title} />

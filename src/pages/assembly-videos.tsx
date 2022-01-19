@@ -1,4 +1,11 @@
-import { Footer, Header, Hero, ServiceGrid } from "components";
+import {
+  Footer,
+  Header,
+  Hero,
+  ServiceGrid,
+  FadeTransition,
+  useCartContext,
+} from "components";
 
 /* eslint-disable react-hooks/exhaustive-deps */
 import { GetStaticPropsContext } from "next";
@@ -9,7 +16,6 @@ import { client } from "client";
 /* eslint-disable @next/next/no-img-element */
 import { getNextStaticProps } from "@faustjs/next";
 import styles from "scss/components/AssemblyVideos.module.scss";
-import { useCartContext } from "components/common/CartContext";
 
 export default function Page({}) {
   const { useQuery } = client;
@@ -42,30 +48,31 @@ export default function Page({}) {
       </Head>
 
       <Hero title="Assembly Videos" bgImage="/images/assembly-hero.png" />
-
       <main className="content content-single">
-        <div className="wrap" style={{ borderBottom: "1px solid black" }}>
-          <h3>Assembly Videos</h3>
-          {_.chunk(assemblyVideos, 3).map((chunk: any[], chunkIdx: any) => (
-            <div key={`row-${chunkIdx}`} className={styles.videos}>
-              {chunk.map((video, featureIdx) => (
-                <div className="assembly_video" key={featureIdx}>
-                  <h3>{video.title}</h3>
-                  <video width="320" height="240" controls>
-                    <source
-                      src={`${video.video.mediaItemUrl}#t=5`}
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-        <section className={styles.explore}>
-          <ServiceGrid />
-        </section>
+        <FadeTransition>
+          <div className="wrap" style={{ borderBottom: "1px solid black" }}>
+            <h3>Assembly Videos</h3>
+            {_.chunk(assemblyVideos, 3).map((chunk: any[], chunkIdx: any) => (
+              <div key={`row-${chunkIdx}`} className={styles.videos}>
+                {chunk.map((video, featureIdx) => (
+                  <div className="assembly_video" key={featureIdx}>
+                    <h3>{video.title}</h3>
+                    <video width="320" height="240" controls>
+                      <source
+                        src={`${video.video.mediaItemUrl}#t=5`}
+                        type="video/mp4"
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+          <section className={styles.explore}>
+            <ServiceGrid />
+          </section>
+        </FadeTransition>
       </main>
 
       <Footer copyrightHolder={generalSettings.title} />

@@ -2,7 +2,7 @@ import CartButtons from "./CartButtons";
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import styles from "scss/components/ProductDetail.module.scss";
-import Button from "components/Button";
+import { Button } from "components";
 
 interface IBestSellerProps {
   product: Product;

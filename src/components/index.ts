@@ -16,8 +16,15 @@ import ProductDetail from "./Products/ProductDetail";
 import PromoBanner from "./PromoBanner";
 import ServiceGrid from "./ServiceGrid";
 import StaffMembers from "./StaffMembers";
+import FadeTransition from "./common/FadeTransition";
+import CartButtons from "./Products/CartButtons";
+import { CartProvider, useCartContext } from "./common/CartContext";
 
 export {
+  useCartContext,
+  CartButtons,
+  CartProvider,
+  FadeTransition,
   CTA,
   Footer,
   Header,

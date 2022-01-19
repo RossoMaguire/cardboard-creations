@@ -1,4 +1,10 @@
-import { Footer, Header, Hero } from "components";
+import {
+  FadeTransition,
+  Footer,
+  Header,
+  Hero,
+  useCartContext,
+} from "components";
 
 /* eslint-disable react-hooks/exhaustive-deps */
 import { GetStaticPropsContext } from "next";
@@ -8,7 +14,6 @@ import { client } from "client";
 /* eslint-disable @next/next/no-img-element */
 import { getNextStaticProps } from "@faustjs/next";
 import styles from "scss/pages/customer-photos.module.scss";
-import { useCartContext } from "components/common/CartContext";
 
 export default function Page() {
   const { useQuery } = client;
@@ -43,18 +48,20 @@ export default function Page() {
       <Hero title="Customer Photos" bgImage={photos[0].guid} />
 
       <main className="content content-single">
-        <div className="wrap">
-          <div className={styles.customerPhotos}>
-            {photos.map((photo) => (
-              <div
-                key={`customer-photo-${photo.id}`}
-                className={styles.customerPhoto}
-              >
-                <img key={photo.id} src={photo.guid} alt="Customer Photo" />
-              </div>
-            ))}
+        <FadeTransition>
+          <div className="wrap">
+            <div className={styles.customerPhotos}>
+              {photos.map((photo) => (
+                <div
+                  key={`customer-photo-${photo.id}`}
+                  className={styles.customerPhoto}
+                >
+                  <img key={photo.id} src={photo.guid} alt="Customer Photo" />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </FadeTransition>
       </main>
 
       <Footer copyrightHolder={generalSettings.title} />

@@ -1,5 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Footer, Header, Hero, ProductDetail } from "components";
+import {
+  FadeTransition,
+  Footer,
+  Header,
+  Hero,
+  ProductDetail,
+  useCartContext,
+} from "components";
 
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
@@ -10,7 +17,6 @@ import { client } from "client";
 /* eslint-disable @next/next/no-img-element */
 import { getNextServerSideProps } from "@faustjs/next";
 import parseCookies from "utils/parseCookies";
-import { useCartContext } from "components/common/CartContext";
 
 export default function Page({ cartCookies = null, products = null, pageUri }) {
   const { useQuery } = client;
@@ -51,10 +57,12 @@ export default function Page({ cartCookies = null, products = null, pageUri }) {
       />
 
       <main className="content content-single">
-        <div className="wrap">
-          <h3>Products</h3>
-          <ProductDetail product={getThisProduct(products)} />
-        </div>
+        <FadeTransition>
+          <div className="wrap">
+            <h3>Products</h3>
+            <ProductDetail product={getThisProduct(products)} />
+          </div>
+        </FadeTransition>
       </main>
 
       <Footer copyrightHolder={generalSettings.title} />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Button from "./Button";
+import { Button } from "components";
 import styles from "scss/components/ContactForm.module.scss";
 
 interface IContactFormProps {

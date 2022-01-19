@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import CartButtons from "components/Products/CartButtons";
+import { CartButtons } from "components";
 import React from "react";
 import styles from "scss/components/Item.module.scss";
 

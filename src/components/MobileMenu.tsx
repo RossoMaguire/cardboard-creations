@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "scss/components/MobileMenu.module.scss";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useCartContext } from "./common/CartContext";
+import { useCartContext } from "components";
 
 const MobileMenu = () => {
   const { menuItems } = client.useQuery();

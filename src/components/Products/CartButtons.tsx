@@ -1,7 +1,7 @@
 import Button from "components/Button";
 import React from "react";
 import styles from "scss/components/ProductDetail.module.scss";
-import { useCartContext } from "components/common/CartContext";
+import { useCartContext } from "components";
 
 interface ICartButtonsProps {
   product: Product;

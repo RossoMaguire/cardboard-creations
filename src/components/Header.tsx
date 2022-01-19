@@ -7,8 +7,7 @@ import Link from "next/link";
 import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import styles from "scss/components/Header.module.scss";
-import { useCartContext } from "./common/CartContext";
-import MobileMenu from "./MobileMenu";
+import { useCartContext, MobileMenu } from "components";
 
 interface Props {
   description?: string;

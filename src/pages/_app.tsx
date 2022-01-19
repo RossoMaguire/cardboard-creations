@@ -10,12 +10,28 @@ import { FaustProvider } from "@faustjs/next";
 import React from "react";
 import { client } from "client";
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+import { motion } from "framer-motion";
+
+export default function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <CartProvider>
         <FaustProvider client={client} pageProps={pageProps}>
-          <Component {...pageProps} />
+          <motion.div
+            key={router.route}
+            initial="pageInitial"
+            animate="pageAnimate"
+            variants={{
+              pageInitial: {
+                opacity: 0,
+              },
+              pageAnimate: {
+                opacity: 1,
+              },
+            }}
+          >
+            <Component {...pageProps} />
+          </motion.div>
         </FaustProvider>
       </CartProvider>
     </>

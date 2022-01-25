@@ -2,8 +2,7 @@
 
 ## Introduction
 
-This repo contains all the code for the app layer of Cardboard Creations headless WordPress website - redeveloped from Shopify for Final Project in Software Development at DBS.
-
+This repo contains all the code for the app layer of Cardboard Creations headless WordPress website.
 ## Run it 
 
 Environment Variables are included with this repo via the Moodle submission.
